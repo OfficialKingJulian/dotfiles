@@ -1,0 +1,15 @@
+#!/usr/bin/env perl6
+
+# Testing something
+my $variable = 'World';
+say "Hello $variable";
+
+#Testing something else
+sub say-hello {
+    my @secondvariable = 'Hello', 'World';
+    say @secondvariable;
+}
+
+if say-hello = True {
+    say say-hello;  
+}
