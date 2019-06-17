@@ -1,0 +1,4 @@
+#!/bin/bash
+
+sudo java -Xmx1024M -Xms1024M -jar ./*.jar nogui
+

@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+printf "\n-----------------\nConfiguring Files\n-----------------\n"
+
+#        Install the 
+# Friendly Interactive SHell
+    sudo apt install fish
+         cd $HOME
+    chsh -s /usr/bin/fish
+         exec fish
+
+
+
+
