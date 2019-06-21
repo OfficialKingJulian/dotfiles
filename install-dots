@@ -3,10 +3,8 @@
 printf "\n-----------------\nConfiguring Files\n-----------------\n"
 
 # Install the Friendly Interactive SHell
-#sudo apt install fish
-#cd $HOME
-#chsh -s /usr/bin/fish
-#exec fish
+sudo apt install fish
+chsh -s /usr/bin/fish
 
 # Apache Webserver Setup
 echo "Would you like to set up a web server? (y/n)"
@@ -16,3 +14,10 @@ if [ $webserver = "n" ] then
   echo "we didn't set that up for ya"
 fi
 
+
+
+
+
+
+
+exec fish
