@@ -29,18 +29,17 @@ for 'post.md'.IO.lines -> $line {
   
 
   my $h-counter = 6;
-  if $line ~~ /\#**1..6\s/ {
+  if $line ~~ /^\#**1..6\s/ {
     loop {
       my regex hcounter {
         <{
           "<-[$h-counter]>"
          }>
       }
-      if $line ~~ /^\#{<hcounter>}\s/ {
+      if $line ~~ /^\#<hcounter>\s/ {
         $newfile.print("<h$h-counter>" ~ $line ~ "</h$h-counter>\n\n");
-      } else {
-        say "rip";
-      }
+        last;
+      }      
       $h-counter = $h-counter - 1;
       last if $h-counter == 0;
     }
