@@ -23,12 +23,16 @@ printf "\n-----------------\nConfiguring Files\n-----------------\n"
     sudo apt install make           # maker
     sudo apt install gcc            # compiler
     sudo apt install ranger         # ranger file expl
+    sudo apt install nodejs         # NodeJs and NPM
 
 # Vim setup, with Plug and the .vimrc file
     sudo apt install vim
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs 
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     sudo cp .vimrc ~/.vimrc
+
+# markdown-pdf
+    sudo npm install -g markdown-pdf 
 
 # Fun Stuff
     cd ~/

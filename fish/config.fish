@@ -7,6 +7,10 @@ end
 
 set fish_greeting
 
+function mkpdf 
+  markdown-pdf
+end
+
 function cls
   clear
 end
