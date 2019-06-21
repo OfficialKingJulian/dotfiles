@@ -1,41 +1,51 @@
-set number
+" Vim Plug
+if empty(glob('~/.vim/autoload/plug.vim'))
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+call plug#begin('~/.vim/plugged')
+    Plug 'mattn/emmet-vim'
+    Plug 'junegunn/goyo.vim'
+call plug#end()
 
+" Fixing Line Breks
+  :set wrap
+  :set linebreak
+  :set nolist  
 
-" {{{
-"
-"      Modifier:  Alvan
-"   Description:  Auto close tag.
-"                 Based on xml.vim(http://www.vim.org/scripts/script.php?script_id=1397)
-"
-" }}}
-"
+" Better Split Navigations
+  nnoremap <C-J> <C-W><C-J>
+  nnoremap <C-K> <C-W><C-K>
+  nnoremap <C-L> <C-W><C-L>
+  nnoremap <C-H> <C-W><C-H>
+
+" Also, tabbing
+  set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
+
+" Also, set the numbering as default 
+  set number 
+
+" All of this is from here https://github.com/alvan/vim-closetag/blob/master/plugin/closetag.vim
 if exists("g:loaded_closetag") | fini | en | let g:loaded_closetag = "1.8.11"
-
 fun! s:Initial()
     call s:Declare('g:closetag_filetypes', 'html,xhtml,phtml')
     call s:Declare('g:closetag_xhtml_filetypes', 'xhtml')
-
     call s:Declare('g:closetag_filenames', '*.html,*.xhtml,*.phtml')
     call s:Declare('g:closetag_xhtml_filenames', '*.xhtml')
-
     call s:Declare('g:closetag_shortcut', '>')
     call s:Declare('g:closetag_close_shortcut', '')
-
     call s:Declare('g:closetag_emptyTags_caseSensitive', 0)
-
     call s:Declare('g:closetag_regions', {
         \ 'typescript.tsx': 'jsxRegion,tsxRegion',
         \ 'javascript.jsx': 'jsxRegion',
         \ })
-
     let g:closetag_filenames = substitute(g:closetag_filenames, '\s*,\s\+', ',', 'g')
     let g:closetag_xhtml_filenames = substitute(g:closetag_xhtml_filenames, '\s*,\s\+', ',', 'g')
     let g:closetag_filetypes = substitute(g:closetag_filetypes, '\s*,\s\+', ',', 'g')
     let g:closetag_xhtml_filetypes = substitute(g:closetag_xhtml_filetypes, '\s*,\s\+', ',', 'g')
-
     if g:closetag_shortcut != ''
         exec "au User vim-closetag inoremap <silent> <buffer> " . g:closetag_shortcut . " ><Esc>:call <SID>CloseIt()<Cr>"
-
         if g:closetag_filetypes != ''
             exec "au FileType " . g:closetag_filetypes . " inoremap <silent> <buffer> " . g:closetag_shortcut . " ><Esc>:call <SID>CloseIt()<Cr>"
         en
@@ -43,7 +53,6 @@ fun! s:Initial()
             exec "au BufNewFile,Bufread " . g:closetag_filenames . " inoremap <silent> <buffer> " . g:closetag_shortcut . " ><Esc>:call <SID>CloseIt()<Cr>"
         en
     en
-
     if g:closetag_close_shortcut != ''
         if g:closetag_filetypes != ''
             exec "au FileType " . g:closetag_filetypes . " inoremap <silent> <buffer> " . g:closetag_close_shortcut . " >"
@@ -52,32 +61,23 @@ fun! s:Initial()
             exec "au BufNewFile,Bufread " . g:closetag_filenames . " inoremap <silent> <buffer> " . g:closetag_close_shortcut . " >"
         en
     en
-
     if g:closetag_xhtml_filetypes != ''
         exec "au FileType " . g:closetag_xhtml_filetypes . " call <SID>Declare('b:closetag_use_xhtml', 1)"
     en
     if g:closetag_xhtml_filenames != ''
         exec "au BufNewFile,Bufread " . g:closetag_xhtml_filenames . " call <SID>Declare('b:closetag_use_xhtml', 1)"
     en
-
     com! -nargs=* -complete=file CloseTagEnableBuffer let b:closetag_disabled = 0
     com! -nargs=* -complete=file CloseTagDisableBuffer let b:closetag_disabled = 1
     com! -nargs=* -complete=file CloseTagToggleBuffer let b:closetag_disabled = exists('b:closetag_disabled') && b:closetag_disabled ? 0 : 1
-
-    " Script rgular expresion used. Documents those nasty criters
-    " Don't check for quotes around attributes!!!
     let s:ReqAttrib = '\(\(\s\|\n\)\+\([^>= \t]\+=[^>&]\+\)\(\s\|\n\)*\)\+\(\/\)\@\<!>'
     let s:EndofName = '\($\|\s\|>\)'
 endf
-
-" Define default variables
 fun! s:Declare(var, def)
     if !exists(a:var)
         let {a:var} = a:def
     en
 endf
-
-" Buffer variables
 fun! s:InitBuf()
     call s:Declare('b:did_ftplugin_closetag', 1)
     call s:Declare('b:closetag_emptyTags', '^\(area\|base\|br\|col\|command\|embed\|hr\|img\|input\|keygen\|link\|meta\|param\|source\|track\|wbr\)$')
@@ -86,11 +86,9 @@ fun! s:InitBuf()
     call s:Declare('b:closetag_haveAtt', 0)
     call s:Declare('b:closetag_use_xhtml', &filetype == 'xhtml' ? 1 : 0)
 endf
-
 fun! s:SavePos()
     retu 'call cursor('.line('.').','. col('.'). ')'
 endf
-
 fun! s:Handler(xml_tag, isHtml)
     let text = 0
     if a:isHtml == 1 && exists("*HtmlAttribCallback")
@@ -102,12 +100,6 @@ fun! s:Handler(xml_tag, isHtml)
         execute "normal! i " . text ."\<Esc>l"
     en
 endf
-
-" Gets the tagname from start position.
-"
-" Now lets go for the name part. The namepart are xmlnamechars which
-" is quite a big range. We assume that everything after '<' or '</'
-" until the first 'space', 'forward slash' or '>' ends de name part.
 fun! s:TagName(from)
     let l:end = match(getline('.'), s:EndofName,a:from)
     let l:tag = strpart(getline('.'),a:from, l:end - a:from)
@@ -117,9 +109,6 @@ fun! s:TagName(from)
 
     retu l:tag
 endf
-
-" Looks for attribute in open tag
-" expect cursor to be on <
 fun! s:HaveAtt()
     "Check if this open tag has attributes
     let l:line = line('.') | let l:col = col('.')
@@ -129,48 +118,23 @@ fun! s:HaveAtt()
         en
     en
 endf
-
-" Should the tag be treated as an non closing) tag?
-" check the current tag with the set of tags defined in b:closetag_emptyTags
-" closetag_emptyTags_caseSensitive defines if the check is case sensitive
 fun! s:AsEmpty()
     retu g:closetag_emptyTags_caseSensitive == 1
                 \ ? b:closetag_tagName =~# b:closetag_emptyTags
                 \ : b:closetag_tagName =~? b:closetag_emptyTags
 endf
-
-" Is there a tag under the cursor?
-" Set bufer wide variable
-"  - b:closetag_firstWasEndTag
-"  - b:closetag_tagName
-"  - b:gotoCloseTag (if the tag under the cursor is one)
-"  - b:gotoOpenTag  (if the tag under the cursor is one)
-" on exit
-"    - returns 1 (true)  or 0 (false)
-"    - position is at '<'
 fun! s:FindTag()
     let b:closetag_firstWasEndTag = 0
     let b:closetag_haveAtt = 0
     let l:haveTag = 0
     let l:stayCol = col('.')
-
-    "Lets find forward a < or a >.  If we first find a > we might be in a tag.
-    "If we find a < first or nothing we are definitly not in a tag
-
-    " if getline('.')[col('.') - 1] != '>'
-    " search('[<>]','W')
-    " en
-
     if getline('.')[col('.') - 1] == '>'
-        " we don't work with:
-        " blank string, empty tags, jsp %> tags, php ?> tags, operator =>, operator ->
         if index([' ', '/', '%', '?', '=', '-'], getline('.')[col('.')-2]) >= 0
             retu l:haveTag
         en
     el
         retu l:haveTag
     en
-
     if search('[<>]','bW') >=0
         if getline('.')[col('.')-1] == '<'
             if getline('.')[col('.')] == '/'
@@ -189,25 +153,14 @@ fun! s:FindTag()
     el
         retu l:haveTag
     en
-
-    "we don't deal with the first > in quotes
     let l:str = strpart(getline('.'),col('.'), l:stayCol - col('.'))
     if (strlen(l:str) - strlen(substitute(substitute(substitute(l:str, '\\\\', '', 'g'), '\\"', '', 'g'), '"', '', 'g'))) % 2
         retu l:haveTag
     en
-
-    "we have established that we are between something like
-    "'</\?[^>]*>'
-
     let b:closetag_tagName = s:TagName(col('.') + b:closetag_firstWasEndTag)
-    "echo 'Tag ' . b:closetag_tagName
-
-    "begin: gwang customization, do not work with an empty tag name
     if b:closetag_tagName == ''
         retu l:haveTag
     en
-    "end: gwang customization, do not work with an empty tag name
-
     let l:haveTag = 1
     if b:closetag_firstWasEndTag == 0
         call s:HaveAtt()
@@ -217,15 +170,12 @@ fun! s:FindTag()
     en
     retu l:haveTag
 endf
-
 fun! s:InValidRegion()
     let l:regions = get(g:closetag_regions, &filetype, '')
     if l:regions == ''
         " no restrictions? no problem
         return 1
     en
-
-    " make sure we're in a valid region type
     let l:regionStack = synstack(line('.'), col('.'))
     for id in l:regionStack
         let l:regionName = synIDattr(id, "name")
@@ -233,11 +183,8 @@ fun! s:InValidRegion()
             retu 1
         en
     endfor
-
-    " not in a valid region; cancel
     retu 0
 endf
-
 fun! s:CloseIt()
     if !exists("b:did_ftplugin_closetag")
         call s:InitBuf()
@@ -308,29 +255,6 @@ fun! s:CloseIt()
         startinsert
     en
 endf
-
 call s:Initial()
-" End of file : closetag.vim
 
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
-call plug#begin('~/.vim/plugged')
-Plug 'mattn/emmet-vim'
-Plug 'junegunn/goyo.vim'
-call plug#end()
-
-" Liune breks
-:set wrap
-:set linebreak
-:set nolist  
-" Better Split Navigations
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-
-set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
 

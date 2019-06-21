@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# Either copies the site quickstarter into a folder,
+# or copies the template into a folder.
+
+# I might add more if I need to at some point.
+
+# Quick is the quickstarter
+if [ $1 == 'quick' ]
+then
+  git clone https://github.com/OfficialKingJulian/Site-Quickstarter
+  mv Site-Quickstarter/* .
+  sudo rm -r Site-Quickstarter
+  sudo rm README.md
+  sudo rm LICENSE
+
+
+# Temp is the "ws is under contruction" file
+elif [ $1 == 'temp' ]
+then 
+  cp ~/sh/tools/templates/index.html .
+else 
+
+# Help remind me if I've forgotten how it works
+  echo 
+  echo This the site producer, it accepts arguments like these...
+  echo 
+  echo "        quick                 GitHub Site-Quickstarter"
+  echo "        temp    'This Site is Under Construction' file"
+  echo
+fi 
+
+
