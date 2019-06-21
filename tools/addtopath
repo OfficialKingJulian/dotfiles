@@ -1,6 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env fish
 
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-
-set -U fish_user_paths "$DIR" $fish_user_paths
+set -U fish_user_paths $PWD $fish_user_paths
 
