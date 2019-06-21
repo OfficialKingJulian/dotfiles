@@ -1,0 +1,18 @@
+#!/bin/bash 
+
+echo "Please enter your git username:" 
+read usrnm
+
+echo "Please enter your email associated with this account:" 
+read email
+
+
+git config --global user.name "$usrnm"
+
+git config --global user.email $email
+
+echo "Your set up is as follows..."
+
+git config --list
+
+

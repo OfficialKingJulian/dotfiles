@@ -1,6 +1,0 @@
-#!/bin/bash
-
-inotifywait -m ~/sh -e create -e moved_to |
-    while read path action file; do
-      chmod +x ~/sh/* 
-    done
