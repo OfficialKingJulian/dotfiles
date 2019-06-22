@@ -24,6 +24,7 @@ printf "\n-----------------\nConfiguring Files\n-----------------\n"
     sudo apt install gcc            # compiler
     sudo apt install ranger         # ranger file expl
     sudo apt install nodejs         # NodeJs and NPM
+    sudo apt install perl6
 
 # Vim setup, with Plug and the .vimrc file
     sudo apt install vim
