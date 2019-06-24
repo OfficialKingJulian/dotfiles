@@ -54,7 +54,11 @@ printf "\n-----------------\nConfiguring Files\n-----------------\n"
     echo
     echo "  nodejs"
     sudo apt install nodejs         # NodeJs and NPM
+<<<<<<< HEAD
     echo
+=======
+    sudo apt install perl6
+>>>>>>> 31ebee0caf7ebaec769004d5fbf04466cbfbedff
 
 # Vim setup, with Plug and the .vimrc file
     echo "  VIM"
