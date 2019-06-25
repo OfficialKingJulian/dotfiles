@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# This is a small script to add
+# to a spell check on the fly.
+
+# Designed to be activated in vim
+# with :!spell <wrong> <correct>
+
+  echo "  :iabbrev ${1} ${2}" >> "${HOME}/.vimrc"
+
