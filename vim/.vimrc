@@ -6,6 +6,15 @@
 
 
 
+
+
+
+
+
+
+
+
+
 " Vim Plug
 
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -17,6 +26,12 @@ call plug#begin('~/.vim/plugged')
     Plug 'mattn/emmet-vim'
     Plug 'junegunn/goyo.vim'
 call plug#end()
+
+
+
+
+
+
 
 
 
@@ -51,9 +66,11 @@ call plug#end()
 " Better Copy-Paste (Ctrl-C, Ctrl-P, a to go to 
 " the end of the current
 " line).
+" ALSO added Ctrl-X
   :vnoremap <c-c> y
   :nnoremap <c-v> <s-p>
   :vnoremap a <c-$>
+  :vnoremap <c-x> d
 
 " Ctrl-Z and Ctrl-Y
   :nnoremap <c-z> u
@@ -107,6 +124,12 @@ call plug#end()
 
 
 
+
+
+
+
+
+
 "
 "      Keep this at the bottom of the file!
 " Little Spell Check - update through the command 
@@ -114,5 +137,9 @@ call plug#end()
 "
   :iabbrev adn and
   :iabbrev maintainence maintenance
-
   :iabbrev flipendo fli<space>fli<space>flip<space>flipendooo
+  :iabbrev excersise exercise
+  :iabbrev exersise exercise
+  :iabbrev apologize apologise
+  :iabbrev proffessor professor
+  :iabbrev febuary February
