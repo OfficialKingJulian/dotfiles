@@ -2,5 +2,5 @@
 
 cd /home/julian/mc1 
 
-sudo screen -d -m -S mc1 bash -c 'sudo java -Xmx1024M -Xms1024M -jar ./*.jar nogui'
+sudo screen -d -m -S mc1 bash -c 'sudo java -Xmx3G -Xms3G -jar ./*.jar nogui'
 

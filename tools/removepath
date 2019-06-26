@@ -1,17 +1,27 @@
-#!/usr/bin/env fish
+#!/bin/bash
 
 # https://github.com/fish-shell/fish-shell/issues/2639
 # This took too long to find an answer to... 
 
-function fish_prompt
-  echo "prompt"
-end
+showpath
 
-echo $fish_user_paths | tr " " "\n" | nl
+# Get number of paths
+  nopaths=$(echo `showpath |& tail -1` | cut -d' ' -f1)
 
-echo "Which one would you like to remove?"
-New Prompt %
+while true; do
+  echo Please enter the number of the path you want to remove: 
+  read pathno
+  if [ ${nopaths} -ge ${pathno} ] && [ ${pathno} -ge 1 ]; then
+    break
+  else 
+    echo
+    echo You must enter a number, it must be a valid number!
+    echo
+    showpath
+  fi
+done
 
-if test $toremove = 1 
-  echo "bloop"
-end
+# Remove the path
+
+./fishremovepath ${pathno}
+
