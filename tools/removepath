@@ -8,20 +8,19 @@ showpath
 # Get number of paths
   nopaths=$(echo `showpath |& tail -1` | cut -d' ' -f1)
 
-while true; do
-  echo Please enter the number of the path you want to remove: 
-  read pathno
-  if [ ${nopaths} -ge ${pathno} ] && [ ${pathno} -ge 1 ]; then
-    break
-  else 
-    echo
-    echo You must enter a number, it must be a valid number!
-    echo
-    showpath
-  fi
-done
+  while true; do
+    echo Please enter the number of the path you want to remove \(Ctrl-C to cancel\): 
+    read pathno
+    if [ ${nopaths} -ge ${pathno} ] && [ ${pathno} -ge 1 ]; then
+      break
+    else 
+      echo
+      echo You must enter a number, it must be a valid number!
+      echo
+      showpath
+    fi
+  done
 
 # Remove the path
-
-./fishremovepath ${pathno}
+  $HOME/dotfiles/tools/fishremovepath ${pathno}
 

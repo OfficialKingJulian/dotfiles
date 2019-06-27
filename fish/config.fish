@@ -15,6 +15,10 @@ function cls
   clear
 end
 
+function cd..
+  cd ..
+end
+
 function mk 
 	mkdir $argv
 	cd $argv

@@ -143,3 +143,4 @@ call plug#end()
   :iabbrev apologize apologise
   :iabbrev proffessor professor
   :iabbrev febuary February
+  :iabbrev sissors scissors
