@@ -134,26 +134,54 @@
   " Status Line
     "function! GitBranch()
       "return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
-    "endfunction
+    "endfunc
 
     "function! StatuslineGit()
       "let l:branchname = GitBranch()
       "return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
-    "endfunction
+    "endfunc
 
     set statusline=\ \ \ 
     set statusline+=Julian\ VIM
     set statusline+=\ \ \ \ \ \
-    set statusline+=%F%m%r%h%w\ 
+    set statusline+=%F%m%r%h%w\
     "set statusline+=%{StatuslineGit()}
     set statusline+=\ \ \ \ \ \ 
     set statusline+=Doc\ Type\:\ %Y
     set statusline+=\ \ \ \ \ \ 
     set statusline+=Doc\ Position\:\ %p%%
     set statusline+=\ \ \ \ \ \ 
-    set statusline+=Files\ Open\:\ %n\ \   
+    set statusline+=Docs\ Open\:\ %n\ \   
     set statusline+=%=%{strftime('%c')}
     set statusline+=\ \ \ 
+
+
+
+    " Show syntax highlighting groups for word under cursor
+      nmap <C-S-P> :call <SID>SynStack()<CR>
+      function! <SID>SynStack()
+        if !exists("*synstack")
+          return
+        endif
+        echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+      endfunc
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
