@@ -1,8 +1,5 @@
-
-
-
-
 " .VIMRC by Julian, using Vim Plug plugin manager
+  set nocompatible
 
 
 
@@ -15,6 +12,10 @@
 
 
 
+
+    """"""""""""""""""""""""""""""""
+    """"     VIM Plug Setup     """"
+    """"""""""""""""""""""""""""""""
 
 
 
@@ -41,9 +42,11 @@
 
 
 
+    """"""""""""""""""""""""""""""""
+    """" Custom Stuff Goes Here """"
+    """"""""""""""""""""""""""""""""
 
-" Custom Stuff Goes Here
-"
+
   " General
     set laststatus=2
     set encoding=utf-8
@@ -51,29 +54,46 @@
     set fileencodings=utf-8
     set ttyfast
     set hlsearch
+    set title
+    set wildmenu
+    syntax on
+    set nostartofline
+    set shortmess=atI
+    set history=1000
+    set lazyredraw
+
 
   " Fixing Line Breks
     :set wrap
     :set linebreak
     :set nolist  
 
-  " Better Split Navigations
-    :nnoremap <C-J> <C-W><C-J>
-    :nnoremap <C-K> <C-W><C-K>
-    :nnoremap <C-L> <C-W><C-L>
-    :nnoremap <C-H> <C-W><C-H>
-    :nnoremap <s-h> :vsplit 
-    :nnoremap <s-v> :split 
-
   " Also, tabbing
     set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
 
-  " Also, set the numbering as default 
+  " And Shifting
+    set shiftround
+    set autoindent
+    set smartindent 
+    set cpoptions  +=I
+
+  " Also, just set the numbering as default 
     set number 
 
+
+
+
+
+
+
+
+    """""""""""""""""""""""""""""""""""
+      """"""" FILE REMAPPINGS """"""
+    """""""""""""""""""""""""""""""""""
+
+
   " Better Copy-Paste (Ctrl-C, Ctrl-P, a to go to 
-  " the end of the current
-  " line).
+  " the end of the current line)
   " ALSO added Ctrl-X
     :vnoremap <c-c> y
     :nnoremap <c-v> <s-p>
@@ -97,6 +117,12 @@
     :nnoremap / /\c
     :nnoremap ? ?\c
 
+  " Highlight as pattern is typed
+    set incsearch
+
+  " Speaking of searches... Ctrl-f
+    :nnoremap <c-f> /
+
   " Tab Multiple Lines in Visual
     :vnoremap <tab> >vgv
     :vnoremap <s-tab> <vgv
@@ -104,61 +130,95 @@
   " Select Whole Doc
     :vnoremap <c-a> <esc>ggvG
 
+  " Easier Split Navigation
+    :nnoremap <C-J> <C-W><C-J>
+    :nnoremap <C-K> <C-W><C-K>
+    :nnoremap <C-L> <C-W><C-L>
+    :nnoremap <C-H> <C-W><C-H>
+    :nnoremap <s-h> :vsplit 
+    :nnoremap <s-v> :split 
+
+  " Arrow movements resize splits
+    :nnoremap <c-Down> :resize +2<CR>
+    :nnoremap <c-Up> :resize -2<CR>
+    :nnoremap <c-Left> :vertical resize +2<CR>
+    :nnoremap <c-Right> :vertical resize -2<CR>
+
+  " Possibly the best thing ever
+  " Causes splits to go to the right and below etc.
+    set splitbelow 
+    set splitright 
 
 
 
 
-  " THIS IS STILL BROKEN
-  " Fixing Odd Ghost Char issue https://stackoverflow.com/questions/6987317/
-  " while-moving-the-cursor-across-a-vim-process-open-in-a-tmux-session-every-now-a
-    map ^[OA <up>
-    map ^[OB <down>
-    map ^[OC <right>
-    map ^[OD <left>
-    set nocompatible
 
 
 
 
-
-
-  " Signature
-    :iabbrev jsign <cr>Kind Regards,<cr><cr>Julian Orchard ~ contact@julians.email
-
-  " File-Specific Things
-    :let mapleader = "-"
-    :autocmd FileType html noremap <buffer> <leader>c 0i<!--<space><esc><s-$>a--><esc>
-    :autocmd FileType html nnoremap <buffer> <leader>h1 <s-o><h1><esc>jo</h1>
-    :autocmd FileType javascript noremap <buffer> <leader>c 0i//<space><space><esc><s-$>
-
+    """""""""""""""""""""""""""
+    """ Status Bar Settings """
+    """   (some is broken)  """
+    """""""""""""""""""""""""""
 
 
 
   " THIS IS WHAT BREAKS THE THING 
   " Status Line
-    "function! GitBranch()
-      "return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
-    "endfunc
+    function! GitBranch()
+      return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+    endfunc
 
-    "function! StatuslineGit()
-      "let l:branchname = GitBranch()
-      "return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
-    "endfunc
+    function! StatuslineGit()
+      let l:branchname = GitBranch()
+      return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
+    endfunc
+                      " THIS IS STILL BROKEN
+                      " Fixing Odd Ghost Char issue https://stackoverflow.com/questions/6987317/
+                      " while-moving-the-cursor-across-a-vim-process-open-in-a-tmux-session-every-now-a
+                        map ^[OA <up>
+                        map ^[OB <down>
+                        map ^[OC <right>
+                        map ^[OD <left>
+                        set nocompatible
+
 
     set statusline=\ \ \ 
     set statusline+=Julian\ VIM
     set statusline+=\ \ \ \ \ \
     set statusline+=%F%m%r%h%w\
-    "set statusline+=%{StatuslineGit()}
+    set statusline+=%{StatuslineGit()}
     set statusline+=\ \ \ \ \ \ 
-    set statusline+=Doc\ Type\:\ %Y
+    set statusline+=File\ Type\:\ %Y
     set statusline+=\ \ \ \ \ \ 
-    set statusline+=Doc\ Position\:\ %p%%
+    set statusline+=File\ Pos\:\ %p%%
     set statusline+=\ \ \ \ \ \ 
-    set statusline+=Docs\ Open\:\ %n\ \   
+    set statusline+=Files\ Open\:\ %n\ \   
     set statusline+=%=%{strftime('%c')}
-    set statusline+=\ \ \ 
+    set statusline+=\ \ \ \ \ 
 
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+" TO DO; THEME AND FILE SPECIFIC SETTINGS
+
+
+    """""""""
+    " THEME "
+    """""""""
 
 
     " Show syntax highlighting groups for word under cursor
@@ -173,6 +233,12 @@
 
 
 
+  " File-Specific Things
+  " TODO 
+    :let mapleader = "-"
+    :autocmd FileType html noremap <buffer> <leader>c 0i<!--<space><esc><s-$>a--><esc>
+    :autocmd FileType html nnoremap <buffer> <leader>h1 <s-o><h1><esc>jo</h1>
+    :autocmd FileType javascript noremap <buffer> <leader>c 0i//<space><space><esc><s-$>
 
 
 
@@ -193,25 +259,19 @@
 
 
 
+    """""""""""""""""""""""""""""""""""""""""""""""""""
+    "      Keep this at the bottom of the file!       "
+    " Little Spell Check - update through the command "
+    "           :!spell <wrong> <correct>             "
+    """""""""""""""""""""""""""""""""""""""""""""""""""
 
 
+" Signature ~ Unrelated to spelling, just neat
+  :iabbrev jsign <cr>Kind Regards,<cr><cr>Julian Orchard ~ contact@julians.email
 
 
+" Added automatically by 'spell' script
 
-
-
-
-
-
-
-
-
-
-"
-"      Keep this at the bottom of the file!
-" Little Spell Check - update through the command 
-"           :!spell <wrong> <correct>
-"
   :iabbrev adn and
   :iabbrev maintainence maintenance
   :iabbrev flipendo fli<space>fli<space>flip<space>flipendooo
