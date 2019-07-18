@@ -126,7 +126,7 @@
 
   " Ammend Line
     :nnoremap <c-a> <s-$>a
-    :nnoremap <c-o> <CR>o
+    ":nnoremap <c-o> <CR>o
 
   " Make searches case insensitive by default (as cool as this is, I am going
   " to just use the :set ic)
@@ -144,7 +144,8 @@
     :vnoremap <s-tab> <vgv
 
   " Select Whole Doc
-    :vnoremap <c-a> <esc>ggvG
+    
+  :vnoremap <c-a> <esc>ggvG
 
   " Easier Split Navigation
     :nnoremap <c-j> <C-W><C-J>
