@@ -8,53 +8,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     """"""""""""""""""""""""""""""""
     """"     VIM Plug Setup     """"
     """"""""""""""""""""""""""""""""
@@ -78,17 +31,9 @@
 
 
 
-
-
-
-
-
     """"""""""""""""""""""""""""""""
     """" Custom Stuff Goes Here """"
     """"""""""""""""""""""""""""""""
-
-
-
 
 
   " General
@@ -228,14 +173,6 @@
 
 
 
-
-
-
-
-
-
-
-
     """""""""""""""""""""""""""
     """ Status Bar Settings """
     """   (some is broken)  """
@@ -286,12 +223,6 @@
 
 
 
-
-
-
-
-
-
 " TO DO; THEME AND FILE SPECIFIC SETTINGS
 
 
@@ -318,19 +249,6 @@
     :autocmd FileType html noremap <buffer> <leader>c 0i<!--<space><esc><s-$>a--><esc>
     :autocmd FileType html nnoremap <buffer> <leader>h1 <s-o><h1><esc>jo</h1>
     :autocmd FileType javascript noremap <buffer> <leader>c 0i//<space><space><esc><s-$>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

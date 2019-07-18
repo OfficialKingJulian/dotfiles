@@ -1,0 +1,3 @@
+#!/bin/bash
+# Copies a shebanged doc to PWD and names it
+  cp ${HOME}/dotfiles/tools/templates/bashtemplate ${PWD}/${1}

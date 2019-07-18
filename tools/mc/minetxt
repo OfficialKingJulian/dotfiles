@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# Get Difference of Text and send it to screen to send to Fb
+  CONTENT="$(comm -23 /home/julian/minecraft/logs/latest.log /home/julian/minecraft/logs/scndlatest.log)"
+  TEXT="$(echo ${CONTENT})" 
+  echo ${TEXT}
+  screen -S 15005.Fb -X stuff "m \"julian.rocks\" ${TEST} \n"
+# Make/Update 2nd Copy
+  sudo cp /home/julian/minecraft/logs/latest.log /home/julian/minecraft/logs/scndlatest.log
