@@ -58,6 +58,9 @@ printf "\n-----------------\nConfiguring Files\n-----------------\n"
     echo "  perl6"
     sudo apt install perl6
     echo
+    echo "  cointop"
+    sudo snap install cointop
+    echo
 
 # Vim setup, with Plug and the .vimrc file
     echo "  VIM"
