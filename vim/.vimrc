@@ -244,11 +244,12 @@
 
 
   " File-Specific Things
-  " TODO 
-    :let mapleader = "-"
-    :autocmd FileType html noremap <buffer> <leader>c 0i<!--<space><esc><s-$>a--><esc>
-    :autocmd FileType html nnoremap <buffer> <leader>h1 <s-o><h1><esc>jo</h1>
-    :autocmd FileType javascript noremap <buffer> <leader>c 0i//<space><space><esc><s-$>
+      if (&ft=='.html' || &ft=='.css' || &ft=='.php')
+        set statusline=\ \ \ 
+        set statusline+=Julian\ VIM\ you\ fucker
+        set statusline+=\ \ \ \ \ \ 
+        "source web.vim
+      endif 
 
 
 

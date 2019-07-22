@@ -54,18 +54,24 @@ printf "\n-----------------\nConfiguring Files\n-----------------\n"
     echo
     echo "  nodejs"
     sudo apt install nodejs         # NodeJs and NPM
-<<<<<<< HEAD
     echo
-=======
+    echo "  perl6"
     sudo apt install perl6
->>>>>>> 31ebee0caf7ebaec769004d5fbf04466cbfbedff
+    echo
 
 # Vim setup, with Plug and the .vimrc file
     echo "  VIM"
     sudo apt install vim
     echo
-    curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    sudo cp ~/dotfiles/vim/.vimrc ~/.vimrc
+    curl -fLo ${HOME}/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    sudo cp ${HOME}/dotfiles/vim/.vimrc ${HOME}/.vimrc
+    echo
+
+# NeoMutt setup
+    echo "  NeoMutt"
+    sudo apt install neomutt
+    sudo cp ${HOME}/dotfiles/neomutt/muttrc ${HOME}/.muttrc
+    echo
 
 # markdown-pdf
     echo 
