@@ -105,6 +105,12 @@
     :vnoremap <c-s> :w<CR>
     :inoremap <c-s> <ESC>:w<CR>
 
+  " Ctrl-l and Ctrl-h moving 
+  " forwards and backwards by
+  " a word at a time
+  "     :nnoremap <c-h> b
+  "     :nnoremap <c-l> w
+
   " Ammend Line
     :nnoremap <c-a> <s-$>a
     ":nnoremap <c-o> <CR>o
