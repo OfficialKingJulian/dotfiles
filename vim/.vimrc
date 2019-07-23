@@ -287,3 +287,4 @@
   :iabbrev febuary February
   :iabbrev sissors scissors
   :iabbrev indesign InDesign
+  :iabbrev elicite elicit
