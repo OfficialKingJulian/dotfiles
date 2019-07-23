@@ -1,6 +1,5 @@
 " .VIMRC by Julian, using Vim Plug plugin manager
-  set nocompatible
-
+  set viminfo+=n~/.vim/viminfo
 
 
 
@@ -51,6 +50,10 @@
     :set history=1000
     :set lazyredraw
     :set noshowmatch
+    :set belloff=all
+
+  " :Q also works
+    :command! Q :q
 
 
   " Fixing Line Breks
@@ -73,7 +76,6 @@
   " Case Insensitive Searches, initially done with the \c remap
     :set ic
 
-    :command Spell :set spell
 
 
 
@@ -108,15 +110,16 @@
   " Ctrl-l and Ctrl-h moving 
   " forwards and backwards by
   " a word at a time
-  "     :nnoremap <c-h> b
-  "     :nnoremap <c-l> w
+    ":nnoremap <s-h> b
+    ":nnoremap <s-l> w
 
   " Ammend Line
     :nnoremap <c-a> <s-$>a
     ":nnoremap <c-o> <CR>o
 
-  " Make searches case insensitive by default (as cool as this is, I am going
-  " to just use the :set ic)
+  " Make searches case insensitive by default 
+  " (as cool as this is, I am going
+  "  to just use the :set ic)
     ":nnoremap / /\c
     ":nnoremap ? ?\c
 
@@ -131,8 +134,7 @@
     :vnoremap <s-tab> <vgv
 
   " Select Whole Doc
-    
-  :vnoremap <c-a> <esc>ggvG
+    :vnoremap <c-a> <esc>ggvGa
 
   " Easier Split Navigation
     :nnoremap <c-j> <C-W><C-J>
@@ -165,12 +167,12 @@
     :nnoremap j gj
     :nnoremap k gk
   
-  " 'd' Actually Deletes, not Cuts
+  " 'd' Deletes, Doesn't Cut
     nnoremap d "_d
     vnoremap d "_d
     
-  " Possibly the best thing ever
-  " Causes splits to go to the right and below etc.
+  " Causes splits to go to the 
+  " right and below etc.
     set splitbelow 
     set splitright 
 
@@ -183,8 +185,6 @@
     """ Status Bar Settings """
     """   (some is broken)  """
     """""""""""""""""""""""""""
-
-
 
   " THIS IS WHAT BREAKS THE THING 
   " Status Line
@@ -249,13 +249,13 @@
 
 
 
-  " File-Specific Things
-      if (&ft=='.html' || &ft=='.css' || &ft=='.php')
-        set statusline=\ \ \ 
-        set statusline+=Julian\ VIM\ you\ fucker
-        set statusline+=\ \ \ \ \ \ 
-        "source web.vim
-      endif 
+    " File-Specific Things
+      " WEB
+        autocmd BufNewFile,BufRead *.html   :so ~/.vim/web.vim
+        autocmd BufNewFile,BufRead *.css    :so ~/.vim/web.vim
+        autocmd BufNewFile,BufRead *.php    :so ~/.vim/web.vim
+        autocmd BufNewFile,BufRead *.txt    :so ~/.vim/txt.vim
+        autocmd BufNewFile,BufRead neomutt* :so ~/.vim/txt.vim
 
 
 
@@ -271,12 +271,16 @@
 
 
 " Signature ~ Unrelated to spelling, just neat 
-  :iabbrev mailto Hello NAME, <cr><cr>EMAILCONTENT<cr><cr>Kind regards, <cr><cr>Julian Orchard ~<cr><cr>julian.marketing<cr>contact@julians.email<esc>? NAME<esc>c2w
-  :iabbrev jsign <cr>Kind Regards,<cr><cr>Julian Orchard ~ contact@julians.email
+  :iabbrev mailtof Hi NAME, <cr><cr>QW<cr><cr>Kind regards, <cr><cr>Julian Orchard ~<cr><cr>julian.marketing<cr>contact@julians.email<esc>? NAME<esc>c2w
+  :iabbrev mailtoi Hi NAME, <cr><cr>QW<cr><cr>Many thanks, <cr><cr>Julian ~<cr><cr>julian.marketing<cr>contact@julians.email<esc>? NAME<esc>c2w
+  :iabbrev signf <cr>Kind Regards,<cr><cr>Julian Orchard ~ contact@julians.email
+  :iabbrev signi <cr>Many thanks,<cr><cr>Julian ~ contact@julians.email
 
 
 " Added automatically by 'spell' script
-
+  :command Spell :set spell
+" EDIT: I know this is already a build in 
+" feature but I'm keeping this anyway.
   :iabbrev adn and
   :iabbrev maintainence maintenance
   :iabbrev flipendo fli<space>fli<space>flip<space>flipendooo
@@ -288,3 +292,4 @@
   :iabbrev sissors scissors
   :iabbrev indesign InDesign
   :iabbrev elicite elicit
+  :iabbrev didnt didn't
