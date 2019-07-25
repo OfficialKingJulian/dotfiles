@@ -6,5 +6,5 @@
 # Designed to be activated in vim
 # with :!spell <wrong> <correct>
 
-  echo "  :iabbrev ${1} ${2}" >> "${HOME}/.vimrc"
+  echo "  :iabbrev ${1} ${2}" >> "${HOME}/.vim/vimrc"
 

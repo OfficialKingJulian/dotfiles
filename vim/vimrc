@@ -76,6 +76,11 @@
   " Case Insensitive Searches, initially done with the \c remap
     :set ic
 
+  " Set Showmatch 
+    :set showmatch
+     hi MatchParen cterm=bold ctermbg=none ctermfg=magenta
+
+
 
 
 
@@ -293,3 +298,4 @@
   :iabbrev indesign InDesign
   :iabbrev elicite elicit
   :iabbrev didnt didn't
+  :iabbrev independant independent
