@@ -72,13 +72,14 @@
 
   " Also, just set the numbering as default 
     :set number 
+    :set relativenumber
 
   " Case Insensitive Searches, initially done with the \c remap
     :set ic
 
   " Set Showmatch 
     :set showmatch
-     hi MatchParen cterm=bold ctermbg=none ctermfg=magenta
+     hi  MatchParen cterm=bold ctermbg=blue ctermfg=white
 
 
 
@@ -256,11 +257,14 @@
 
     " File-Specific Things
       " WEB
-        autocmd BufNewFile,BufRead *.html   :so ~/.vim/web.vim
-        autocmd BufNewFile,BufRead *.css    :so ~/.vim/web.vim
-        autocmd BufNewFile,BufRead *.php    :so ~/.vim/web.vim
-        autocmd BufNewFile,BufRead *.txt    :so ~/.vim/txt.vim
-        autocmd BufNewFile,BufRead neomutt* :so ~/.vim/txt.vim
+        autocmd BufNewFile,BufRead *.html       :so ~/.vim/web.vim
+        autocmd BufNewFile,BufRead *.css        :so ~/.vim/web.vim
+        autocmd BufNewFile,BufRead *.php        :so ~/.vim/web.vim
+      " Text
+        autocmd BufNewFile,BufRead *.txt        :so ~/.vim/txt.vim
+        autocmd BufNewFile,BufRead *.md         :so ~/.vim/txt.vim
+        autocmd BufNewFile,BufRead *.markdown   :so ~/.vim/txt.vim
+        autocmd BufNewFile,BufRead neomutt*     :so ~/.vim/txt.vim
 
 
 
