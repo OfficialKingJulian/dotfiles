@@ -4,5 +4,5 @@
 
        autocmd VimEnter * :Goyo
 
-            noremap :q :qa
+            nnoremap :q :qa
 
