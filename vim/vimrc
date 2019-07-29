@@ -59,6 +59,7 @@
     :set wrap
     :set linebreak
     :set nolist  
+    :set scrolloff=13
 
   " Also, tabbing
     :set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
@@ -79,7 +80,7 @@
 
   " Set Highlight Search
     :set hlsearch
-    :hi Search cterm=bold ctermfg=none ctermbg=darkgrey
+     hi Search cterm=bold ctermfg=none ctermbg=darkgrey
     :set ic
 
 
@@ -130,7 +131,7 @@
     ":nnoremap ? ?\c
 
   " Highlight as pattern is typed
-    set incsearch
+    :set incsearch
 
   " Speaking of searches... Ctrl-f
     :nnoremap <c-f> /
@@ -167,11 +168,17 @@
     :inoremap <Right> <nop>
     :inoremap <Up> <nop>
     :inoremap <Down> <nop>
- 
+
+  " Remove the... hl functionality...
+    :nnoremap h F
+    :nnoremap l f
 
   " Make hjkl Graphical as default
     :nnoremap j gj
     :nnoremap k gk
+  
+  " Make things Centered
+    :nnoremap G Gzz
   
   " 'd' Deletes, Doesn't Cut
     nnoremap d "_d
