@@ -42,7 +42,6 @@
     :set fileencoding=utf-8
     :set fileencodings=utf-8
     :set ttyfast
-    :set hlsearch
     :set title
     :set wildmenu
     :set nostartofline
@@ -74,13 +73,14 @@
     :set number 
     :set relativenumber
 
-  " Case Insensitive Searches, initially done with the \c remap
-    :set ic
-
   " Set Showmatch 
     :set showmatch
      hi  MatchParen cterm=bold ctermbg=blue ctermfg=white
 
+  " Set Highlight Search
+    :set hlsearch
+    :hi Search cterm=bold ctermfg=none ctermbg=darkgrey
+    :set ic
 
 
 
