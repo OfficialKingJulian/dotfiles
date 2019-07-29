@@ -291,15 +291,29 @@
 " EDIT: I know this is already a build in 
 " feature but I'm keeping this anyway.
   :iabbrev adn and
+  :iabbrev Adn And
   :iabbrev maintainence maintenance
+  :iabbrev Maintainence Maintenance
   :iabbrev flipendo fli<space>fli<space>flip<space>flipendooo
   :iabbrev excersise exercise
+  :iabbrev Excersise Exercise
   :iabbrev exersise exercise
+  :iabbrev Exersise Exercise
   :iabbrev apologize apologise
+  :iabbrev Apologize Apologise
   :iabbrev proffessor professor
+  :iabbrev Proffessor Professor
   :iabbrev febuary February
+  :iabbrev Febuary February
   :iabbrev sissors scissors
+  :iabbrev Sissors Scissors
   :iabbrev indesign InDesign
   :iabbrev elicite elicit
+  :iabbrev Elicite Elicit
   :iabbrev didnt didn't
+  :iabbrev Didnt Didn't
   :iabbrev independant independent
+  :iabbrev Independant Independent
+  :iabbrev resiliant resilient
+  :iabbrev Resiliant Resilient
+  :iabbrev Janruary January
