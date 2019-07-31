@@ -1,0 +1,30 @@
+# All Bindings
+
+# Sidebar 'macro' Bindings
+  macro index,pager \Ck "<sidebar-prev><sidebar-open>"
+  macro index,pager \Cj "<sidebar-next><sidebar-open>"
+
+# General 'bind' Bindings
+  bind index,pager i  noop
+  bind index,pager g  noop
+  bind index,pager z  decrypt-copy
+  bind index,pager |  sidebar-toggle-visible
+  bind index gg       first-entry
+  bind index G        last-entry
+  bind index £        imap-fetch-mail
+  bind index l        display-message
+  bind index /        limit
+  bind pager h        exit
+  bind pager <up>     previous-line
+  bind pager <down>   next-line
+  bind pager k        previous-line
+  bind pager j        next-line
+  bind pager gg       top
+  bind pager G        bottom
+# Deletion
+  bind  index,pager    d    noop
+  macro index,pager    dd  "<delete-message><sync-mailbox>y"
+  macro index,pager    dat "<delete-thread><sync-mailbox>y"
+# URL View
+  macro index,pager     \cs "<pipe-message> urlscan<Enter>" "call urlscan to extract URLs out of a message"
+  macro attach,compose   \cs "<pipe-entry> urlscan<Enter>" "call urlscan to extract URLs out of a message"

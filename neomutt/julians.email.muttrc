@@ -1,0 +1,22 @@
+ 
+# Gmail config
+  
+  unmailboxes *
+
+  source "gpg -d ~/.mutt/pwds/julians.email.gpg |"
+  set imap_user = "contact@julians.email"
+  set smtp_url = "smtp://contact@julians.email@smtp.gmail.com:587"       
+  set from = "contact@julians.email"                            
+  set realname = "Julian"
+  set folder = "imaps://imap.gmail.com:993"                     
+  set spoolfile = "+Inbox"
+  set postponed = "+[Gmail]/Drafts"
+  set record    = "+[Gmail]/Sent Mail"
+  set trash     = "+[Gmail]/Bin"
+# Sidebar Folder Setup
+  mailboxes =Inbox =[Gmail]/Sent\ Mail =[Gmail]/Drafts =[Gmail]/Spam =[Gmail]/Bin
+
+  set header_cache =     ~/.mutt/julians.email/cache/headers            
+  set message_cachedir = ~/.mutt/julians.email/cache/bodies         
+  set certificate_file = ~/.mutt/julians.email/certificates    
+

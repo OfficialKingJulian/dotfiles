@@ -1,0 +1,28 @@
+
+# Hotmail config 
+
+  unmailboxes *
+
+  source "gpg -d ~/.mutt/pwds/julian.hotmail.gpg |"
+ 
+  set ssl_starttls=yes
+  set ssl_force_tls=yes
+
+  set imap_user = 'julianorchard@hotmail.com'
+  set from= $imap_user
+  set use_from=yes
+  set realname='Julian'
+  set folder = imaps://imap-mail.outlook.com:993
+  set spoolfile  =   "+Inbox"
+  set postponed  =   "+[hotmail]/Drafts"
+  set record     =   "+[hotmail]/Sent Mail"
+  set trash      =   "+[hotmail]/Bin"
+# Sidebar Folder Setup
+  mailboxes =Inbox =[hotmail]/Sent\ Mail =[hotmail]/Drafts =[hotmail]/Spam =[hotmail]/Bin
+
+  set header_cache     =  "~/.mutt/julian.hotmail/cache/headers"
+  set message_cachedir =  "~/.mutt/julian.hotmail/cache/bodies"
+  set certificate_file =  "~/.mutt/julian.hotmail/certificates"
+  set smtp_url         =  "smtp://$imap_user@smtp-mail.outlook.com:587"
+  set imap_keepalive = 900
+
