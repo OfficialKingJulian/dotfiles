@@ -26,5 +26,7 @@
   macro index,pager    dd  "<delete-message><sync-mailbox>y"
   macro index,pager    dat "<delete-thread><sync-mailbox>y"
 # URL View
-  macro index,pager     \cs "<pipe-message> urlscan<Enter>" "call urlscan to extract URLs out of a message"
-  macro attach,compose   \cs "<pipe-entry> urlscan<Enter>" "call urlscan to extract URLs out of a message"
+  macro index,pager     \cs "<pipe-message> urlscan<Enter>" "Call urlscan to extract URLs out of a message"
+  macro attach,compose  \cs "<pipe-entry> urlscan<Enter>"   "Call urlscan to extract URLs out of a message"
+# Docx View
+  macro attach          \cw "<pipe-entry> docx2txt<Enter>"  "Call docx2txt to extract the text from this .docx"

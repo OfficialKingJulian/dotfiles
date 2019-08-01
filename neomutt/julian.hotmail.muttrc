@@ -5,24 +5,32 @@
 
   source "gpg -d ~/.mutt/pwds/julian.hotmail.gpg |"
  
-  set ssl_starttls=yes
-  set ssl_force_tls=yes
+set ssl_starttls=yes
+set ssl_force_tls=yes
 
+# The Basics
   set imap_user = 'julianorchard@hotmail.com'
-  set from= $imap_user
+  set from= julianorchard@hotmail.com
   set use_from=yes
   set realname='Julian'
   set folder = imaps://imap-mail.outlook.com:993
-  set spoolfile  =   "+Inbox"
-  set postponed  =   "+[hotmail]/Drafts"
-  set record     =   "+[hotmail]/Sent Mail"
-  set trash      =   "+[hotmail]/Bin"
-# Sidebar Folder Setup
-  mailboxes =Inbox =[hotmail]/Sent\ Mail =[hotmail]/Drafts =[hotmail]/Spam =[hotmail]/Bin
 
+# Folders Setup (this took a very long time to figure out...)
+  set spoolfile  =   "+Inbox"
+  set record     =   "+sentitems"
+  set postponed  =   "+Drafts"
+  set trash      =   "+deleted"
+# Sidebar Folder Setup
+  mailboxes =\ \ \ \ \ \ HOTMAIL =Inbox =Sent =Drafts =Deleted =Car =College =Crypto =Holiday =Holiday/Amsterdam2018 =Holiday/Belgium2019 =Bills =Recipts 
+
+# More THINGS
   set header_cache     =  "~/.mutt/julian.hotmail/cache/headers"
   set message_cachedir =  "~/.mutt/julian.hotmail/cache/bodies"
   set certificate_file =  "~/.mutt/julian.hotmail/certificates"
-  set smtp_url         =  "smtp://$imap_user@smtp-mail.outlook.com:587"
+  set smtp_url         =  "smtp://julianorchard@hotmail.com@smtp-mail.outlook.com:25"
   set imap_keepalive = 900
+
+# Taking Out The Trash
+  folder-hook .       'macro index,pager dd "<delete-message><sync-mailbox>y"'
+  folder-hook Deleted 'macro index,pager dd "<purge-message><sync-mailbox>y"'
 

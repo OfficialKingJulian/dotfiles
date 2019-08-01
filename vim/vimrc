@@ -289,6 +289,7 @@
 " Signature ~ Unrelated to spelling, just neat 
   :iabbrev mailtof Hi NAME, <cr><cr>QW<cr><cr>Kind regards, <cr><cr>Julian Orchard ~<cr><cr>julian.marketing<cr>contact@julians.email<esc>? NAME<esc>c2w
   :iabbrev mailtoi Hi NAME, <cr><cr>QW<cr><cr>Many thanks, <cr><cr>Julian ~<cr><cr>julian.marketing<cr>contact@julians.email<esc>? NAME<esc>c2w
+  :iabbrev mailtol Hi NAME, <cr><cr>QW<cr><cr>Love, <cr><cr>Julian ~<cr><cr>julian.marketing<cr>contact@julians.email<esc>? NAME<esc>c2w
   :iabbrev signf <cr>Kind Regards,<cr><cr>Julian Orchard ~ contact@julians.email
   :iabbrev signi <cr>Many thanks,<cr><cr>Julian ~ contact@julians.email
 
