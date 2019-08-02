@@ -1,4 +1,5 @@
 # Colour Settings (from https://github.com/LukeSmithxyz/mutt-wizard)
+# ----- Very slightly edited, but not really
   color index yellow default '.*'
   color index_author red default '.*'
   color index_number blue default
@@ -12,7 +13,7 @@
   mono error bold
   color normal default default
   color indicator brightblack white
-  color sidebar_highlight brightblack white
+  color sidebar_highlight default default
   color sidebar_divider brightblack black
   color sidebar_flagged red black
   color sidebar_new green black
@@ -36,7 +37,6 @@
   color underline black default
   color normal default default
   color header blue default ".*"
-# Regex
   color header brightmagenta default "^(From)"
   color header brightcyan default "^(Subject)"
   color header brightwhite default "^(CC|BCC)"
@@ -59,8 +59,4 @@
   mono body bold "^gpg: Good signature"
   mono body bold "^gpg: BAD signature from.*"
   color body red default "([a-z][a-z0-9+-]*://(((([a-z0-9_.!~*'();:&=+$,-]|%[0-9a-f][0-9a-f])*@)?((([a-z0-9]([a-z0-9-]*[a-z0-9])?)\\.)*([a-z]([a-z0-9-]*[a-z0-9])?)\\.?|[0-9]+\\.[0-9]+\\.[0-9]+\\.[0-9]+)(:[0-9]+)?)|([a-z0-9_.!~*'()$,;:@&=+-]|%[0-9a-f][0-9a-f])+)(/([a-z0-9_.!~*'():@&=+$,-]|%[0-9a-f][0-9a-f])*(;([a-z0-9_.!~*'():@&=+$,-]|%[0-9a-f][0-9a-f])*)*(/([a-z0-9_.!~*'():@&=+$,-]|%[0-9a-f][0-9a-f])*(;([a-z0-9_.!~*'():@&=+$,-]|%[0-9a-f][0-9a-f])*)*)*)?(\\?([a-z0-9_.!~*'();/?:@&=+$,-]|%[0-9a-f][0-9a-f])*)?(#([a-z0-9_.!~*'();/?:@&=+$,-]|%[0-9a-f][0-9a-f])*)?|(www|ftp)\\.(([a-z0-9]([a-z0-9-]*[a-z0-9])?)\\.)*([a-z]([a-z0-9-]*[a-z0-9])?)\\.?(:[0-9]+)?(/([-a-z0-9_.!~*'():@&=+$,]|%[0-9a-f][0-9a-f])*(;([-a-z0-9_.!~*'():@&=+$,]|%[0-9a-f][0-9a-f])*)*(/([-a-z0-9_.!~*'():@&=+$,]|%[0-9a-f][0-9a-f])*(;([-a-z0-9_.!~*'():@&=+$,]|%[0-9a-f][0-9a-f])*)*)*)?(\\?([-a-z0-9_.!~*'();/?:@&=+$,]|%[0-9a-f][0-9a-f])*)?(#([-a-z0-9_.!~*'();/?:@&=+$,]|%[0-9a-f][0-9a-f])*)?)[^].,:;!)? \t\r\n<>\"]"
-
-  # Custom Regex
-    color index green default "HOTMAIL" #Hotmail
-    color index green default "GMAIL"   #Gmail
 

@@ -14,7 +14,8 @@
   set record    = "+[Gmail]/Sent Mail"
   set trash     = "+[Gmail]/Bin"
 # Sidebar Folder Setup
-  mailboxes =\ \ \ \ \ \ \ GMAIL =Inbox =[Gmail]/Sent\ Mail =[Gmail]/Drafts =[Gmail]/Spam =[Gmail]/Bin
+  mailboxes =\ \ \ \ \ \ CONTACT
+  mailboxes =Inbox =[Gmail]/Sent\ Mail =[Gmail]/Drafts =[Gmail]/Spam =[Gmail]/Bin
 
   set header_cache =     ~/.mutt/julians.email/cache/headers            
   set message_cachedir = ~/.mutt/julians.email/cache/bodies         

@@ -5,8 +5,8 @@
 
   source "gpg -d ~/.mutt/pwds/julian.hotmail.gpg |"
  
-set ssl_starttls=yes
-set ssl_force_tls=yes
+  set ssl_starttls=yes
+  set ssl_force_tls=yes
 
 # The Basics
   set imap_user = 'julianorchard@hotmail.com'
@@ -20,8 +20,11 @@ set ssl_force_tls=yes
   set record     =   "+sentitems"
   set postponed  =   "+Drafts"
   set trash      =   "+deleted"
+# Not sure why this happens... but this might fix it
+  fcc-hook . +deleted
+
 # Sidebar Folder Setup
-  mailboxes =\ \ \ \ \ \ HOTMAIL =Inbox =Sent =Drafts =Deleted =Car =College =Crypto =Holiday =Holiday/Amsterdam2018 =Holiday/Belgium2019 =Bills =Recipts 
+  mailboxes =\ \ \ \ \ \ HOTMAIL =Inbox =Sent =Drafts =Deleted =Car =College =Crypto =Holiday =Holiday/Amsterdam2018 =Holiday/Belgium2019 =Bills =Recipts =Work =Work/Blog =Work/Mynt\ Image =Work/Paragons =Work/Remarkable =Work/Wessex\ Lifts
 
 # More THINGS
   set header_cache     =  "~/.mutt/julian.hotmail/cache/headers"

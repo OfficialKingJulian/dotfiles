@@ -1,0 +1,24 @@
+ 
+# Gmail config
+  
+  unmailboxes *
+
+  source "gpg -d ~/.mutt/pwds/officialkingjulian.gmail.gpg |"
+  set imap_user = "officialkingjulian@gmail.com"
+  set smtp_url = "smtp://officialkingjulian@smtp.gmail.com:587"       
+  set from = "officialkingjulian@gmail.com"
+  set realname = "King Julian"
+  set folder = "imaps://imap.gmail.com:993"
+
+# Places
+  set spoolfile = "+Inbox"
+  set postponed = "+[Gmail]/Drafts"
+  set record    = "+[Gmail]/Sent Mail"
+  set trash     = "+[Gmail]/Trash"
+# Sidebar Folder Setup
+  mailboxes =\ \ \ \ \ \ \ GMAIL =Inbox =[Gmail]/Sent\ Mail =[Gmail]/Drafts =[Gmail]/Spam =[Gmail]/Trash
+
+  set header_cache =     ~/.mutt/officialkingjulian.gmail/cache/headers            
+  set message_cachedir = ~/.mutt/officialkingjulian.gmail/cache/bodies         
+  set certificate_file = ~/.mutt/officialkingjulian.gmail/certificates    
+
