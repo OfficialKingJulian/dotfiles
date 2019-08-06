@@ -1,0 +1,65 @@
+#!/bin/bash
+
+# This doesn't deal with
+# folder names with spaces
+# in, because   s p a c e s
+
+cd ${HOME}/.mutt/julian.hotmail/cache/bodies/imaps:julianorchard@hotmail.com@imap-mail.outlook.com:993/ 
+Outputfile="${HOME}/.config/mutt/muttrc"
+
+echo ""
+echo Automatically create shortcuts to move mail between folders in neomutt! 
+echo ""
+
+for folder in * ; do
+
+  if [ -d ${folder} ]; then
+
+    echo Assign a shortcut to ${folder} - leave blank to skip
+    read Shortcut
+    if [ -z $Shortcut ] ; then 
+      echo Skip 
+      echo ""
+    else 
+
+      printf "macro index,pager \cm\c${Shortcut} \"<copy-message>?c"  >> $Outputfile
+      for i in {1..42} ; do
+        printf "<backspace>" >> $Outputfile
+      done
+      printf "imaps://imap-mail.outlook.com:993/" >> $Outputfile
+      printf ${folder} >> $Outputfile
+      printf "<enter><enter>ydd\"" >> $Outputfile
+
+      echo "" >> $Outputfile
+
+    fi
+
+  # cd into folder
+    cd $folder 
+    for folder2 in * ; do
+
+      if [ -d ${folder2} ] ; then
+        echo Assign a shortcut to ${folder}/${folder2} - leave blank to skip
+        read Shortcut
+        if [ -z $Shortcut ] ; then 
+          echo Skip 
+          echo ""
+        else 
+          printf "macro index,pager \cm\c${Shortcut} \"<copy-message>?c"  >> $Outputfile
+          for i in {1..42} ; do
+            printf "<backspace>" >> $Outputfile
+          done
+          printf "imaps://imap-mail.outlook.com:993/" >> $Outputfile
+          printf ${folder}/${folder2} >> $Outputfile
+          printf "<enter><enter>ydd\"" >> $Outputfile
+          echo "" >> $Outputfile
+        fi
+      fi
+
+    done
+    cd ..
+  # cd back out
+
+  fi
+
+done

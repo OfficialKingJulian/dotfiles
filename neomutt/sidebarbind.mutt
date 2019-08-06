@@ -1,0 +1,10 @@
+
+# Sidebar 'bind' Bindings
+
+  bind index,pager \ck sidebar-prev
+  bind index,pager \cj sidebar-next
+  bind index,pager \cl sidebar-open 
+
+# Sidebar Colour Change
+  color sidebar_highlight red default
+ 

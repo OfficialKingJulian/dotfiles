@@ -21,3 +21,5 @@
   set message_cachedir = ~/.mutt/julians.email/cache/bodies         
   set certificate_file = ~/.mutt/julians.email/certificates    
 
+# Sidebar
+  source ~/.config/mutt/sidebarmacro.mutt

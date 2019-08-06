@@ -1,0 +1,9 @@
+
+# Sidebar 'macro' Binding
+
+  macro index,pager \Ck "<sidebar-prev><sidebar-open>"
+  macro index,pager \Cj "<sidebar-next><sidebar-open>"
+
+# Sidebar Colour Change
+  color sidebar_highlight default default
+

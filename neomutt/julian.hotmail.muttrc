@@ -24,7 +24,7 @@
   fcc-hook . +deleted
 
 # Sidebar Folder Setup
-  mailboxes =\ \ \ \ \ \ HOTMAIL =Inbox =Sent =Drafts =Deleted =Car =College =Crypto =Holiday =Holiday/Amsterdam2018 =Holiday/Belgium2019 =Bills =Recipts =Work =Work/Blog =Work/Mynt\ Image =Work/Paragons =Work/Remarkable =Work/Wessex\ Lifts
+  mailboxes =\ \ \ \ \ \ HOTMAIL =Inbox =Sent =Drafts =Deleted =Car =College =Crypto =Holiday =Holiday/Amsterdam2018 =Holiday/Belgium2019 =Bills =Recipts =Work =Work/Blog =Work/Mynt =Work/Paragons =Work/Remarkable =Work/Wessex
 
 # More THINGS
   set header_cache     =  "~/.mutt/julian.hotmail/cache/headers"
@@ -37,3 +37,5 @@
   folder-hook .       'macro index,pager dd "<delete-message><sync-mailbox>y"'
   folder-hook Deleted 'macro index,pager dd "<purge-message><sync-mailbox>y"'
 
+# Sidebar Bindings
+  source ~/.config/mutt/sidebarbind.mutt

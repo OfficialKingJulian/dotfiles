@@ -22,3 +22,5 @@
   set message_cachedir = ~/.mutt/officialkingjulian.gmail/cache/bodies         
   set certificate_file = ~/.mutt/officialkingjulian.gmail/certificates    
 
+# Sidebar
+  source ~/.config/mutt/sidebarmacro.mutt
