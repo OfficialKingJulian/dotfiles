@@ -1,0 +1,14 @@
+#!/usr/bin/env fish
+
+echo ""
+read testing -P "Would you like to add the current location as a Path?  "
+ 
+
+switch $testing 
+  case y yes
+    set -U fish_user_paths $PWD $fish_user_paths
+    echo "Complete; this location is now a path!"
+  case '*'
+    echo "No worries, try again when you're ready!"
+end
+

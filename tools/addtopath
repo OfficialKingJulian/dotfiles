@@ -1,4 +1,0 @@
-#!/usr/bin/env fish
-
-set -U fish_user_paths $PWD $fish_user_paths
-
