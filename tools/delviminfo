@@ -1,3 +1,0 @@
-#!/bin/bash
-# Just copies .viminfo from ~ to ~/.vim/ based on https://vi.stackexchange.com/questions/9717/cant-move-viminfo-file-viminfo-reverts-upon-loading-vim
-mv ${HOME}/.viminfo ${HOME}/.vim/.
