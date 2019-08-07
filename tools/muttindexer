@@ -1,65 +1,96 @@
 #!/bin/bash
 
-# This doesn't deal with
-# folder names with spaces
-# in, because   s p a c e s
+# Only deals with folder names without 
+# spaces. Also only goes to one level
+# of folder depth; this was all I needed
+# so didn't add any further depth.
 
-cd ${HOME}/.mutt/julian.hotmail/cache/bodies/imaps:julianorchard@hotmail.com@imap-mail.outlook.com:993/ 
-Outputfile="${HOME}/.config/mutt/muttrc"
+# Writes to the File 
+  writeToFile() {
+    printf "macro index,pager \cm\c${Shortcut} \"<copy-message>?c"  >> $Outputfile
+  # Backspace x42 
+    for i in {1..42} ; do
+      printf "<backspace>" >> $Outputfile
+    done
+    printf "imaps://imap-mail.outlook.com:993/${Folder}<enter><enter>ydd\" \"Move Item to \'${Folder}\'. Added Automatically by MuttIndexer \"" >> $Outputfile
+    echo "" >> $Outputfile
+  }
 
-echo ""
-echo Automatically create shortcuts to move mail between folders in neomutt! 
-echo ""
+# Specify the Output file and Find the Mailbox(es - further dev)
+  cd ~/.mutt
+  inboxLocations=(`find / -xdev 2>/dev/null -name "Inbox"`)
 
-for folder in * ; do
+  # Title 
+    echo ""
+    echo Automatically create shortcuts to move mail between folders in neomutt! \(Only working with Outlook, currently\)
+    echo ""
 
-  if [ -d ${folder} ]; then
+# Loop Through All Mailboxes
+  counter=0
+  for InboxLocation in "${inboxLocations[@]}"; do
 
-    echo Assign a shortcut to ${folder} - leave blank to skip
-    read Shortcut
-    if [ -z $Shortcut ] ; then 
-      echo Skip 
-      echo ""
-    else 
+  # Get Mailbox
+    cd $InboxLocation
+    cd ..
+    # We're  at  the 
+    # right location
 
-      printf "macro index,pager \cm\c${Shortcut} \"<copy-message>?c"  >> $Outputfile
-      for i in {1..42} ; do
-        printf "<backspace>" >> $Outputfile
-      done
-      printf "imaps://imap-mail.outlook.com:993/" >> $Outputfile
-      printf ${folder} >> $Outputfile
-      printf "<enter><enter>ydd\"" >> $Outputfile
-
-      echo "" >> $Outputfile
-
+  # Specify Output File - NOT THIS SIMPLE
+    counter=${counter}+1
+    Outputfile="${HOME}/.mutt/bindings-acct-${counter}.mutt"
+   
+  # Test For Multiple Mailboxes
+    if [ ${#inboxLocations[@]}>1 ] ; then 
+      echo "Multiple Mailboxes Found: "
+    else
+      echo "One mailbox; this should be easy!"
     fi
+    echo $PWD
+    echo ""
 
-  # cd into folder
-    cd $folder 
-    for folder2 in * ; do
+  # Loop through folder
+    for folder in * ; do
 
-      if [ -d ${folder2} ] ; then
-        echo Assign a shortcut to ${folder}/${folder2} - leave blank to skip
+      if [ -d ${folder} ]; then
+
+        echo Assign a shortcut to ${folder} - leave blank to skip
         read Shortcut
         if [ -z $Shortcut ] ; then 
+        # Skip
           echo Skip 
           echo ""
         else 
-          printf "macro index,pager \cm\c${Shortcut} \"<copy-message>?c"  >> $Outputfile
-          for i in {1..42} ; do
-            printf "<backspace>" >> $Outputfile
-          done
-          printf "imaps://imap-mail.outlook.com:993/" >> $Outputfile
-          printf ${folder}/${folder2} >> $Outputfile
-          printf "<enter><enter>ydd\"" >> $Outputfile
-          echo "" >> $Outputfile
+        # Call Write To File
+          Folder=${folder}
+          writeToFile
         fi
+
+        # cd into nested folder
+        cd $folder 
+        for folder2 in * ; do
+
+          if [ -d ${folder2} ] ; then
+            echo Assign a shortcut to ${folder}/${folder2} - leave blank to skip
+            read Shortcut
+            if [ -z $Shortcut ] ; then 
+            # Skip
+              echo Skip 
+              echo ""
+            else 
+            # Call Write To File
+              Folder=${folder}/${folder2}
+              writeToFile
+            fi
+          fi
+
+        done
+        cd ..
+        # cd back out
+
       fi
 
     done
-    cd ..
-  # cd back out
 
-  fi
+  done
 
-done
+
