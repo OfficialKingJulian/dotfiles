@@ -1,0 +1,30 @@
+#!/bin/bash
+ 
+# Installs a Bludit Instance in the Current Directory
+
+  if [ ! -d "$DIRECTORY" ]; then  
+  # Bludit Not Found
+    echo "Bludit not found; do you want to get it from GitHub? (y/n)"
+    read getBluditYN
+    if [ getBluditYN="y" ] ; then
+      git clone https://github.com/bludit/bludit
+    else
+      echo "Try again later..."
+      exit 0
+    fi
+  fi
+
+  echo ""
+  echo "Copying Bludit Locally"
+  cp -r bludit/* .
+  sudo rm -r bludit
+# htaccess
+  touch .htaccess
+  chmod 666 .htaccess
+# bl-content
+  mkdir bl-content
+  chmod 777 bl-content
+
+
+  echo ""
+  echo "Complete."
