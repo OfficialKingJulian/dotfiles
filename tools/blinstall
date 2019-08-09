@@ -6,7 +6,7 @@
   # Bludit Not Found
     echo "Bludit not found; do you want to get it from GitHub? (y/n)"
     read getBluditYN
-    if [ getBluditYN="y" ] ; then
+    if [ getBluditYN="y" ] || [ getBluditYN="yes" ] ; then
       git clone https://github.com/bludit/bludit
     else
       echo "Try again later..."

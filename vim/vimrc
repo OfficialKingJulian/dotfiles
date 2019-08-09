@@ -90,6 +90,11 @@
     """""""""""""""""""""""""""""""""""
 
 
+  " Escape Key Remapping
+    :inoremap <silent> jk <C-c>:stopinsert<cr>l
+    :vnoremap <silent> jk <C-c>:stopinsert<cr>l
+
+
   " Better Copy-Paste (Ctrl-C, Ctrl-P, a to go to 
   " the end of the current line)
   " ALSO added Ctrl-X
