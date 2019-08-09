@@ -30,7 +30,11 @@
 
 # Move Messages 
   bind  index,pager   \cm   noop
-  macro index,pager   \cm\cw  "<copy-message>?c<backspace><backspace><backspace><backspace><backspace><backspace><backspace><backspace><backspace><backspace><backspace><backspace><backspace><backspace><backspace><backspace><backspace><backspace><backspace><backspace><backspace><backspace><backspace><backspace><backspace><backspace><backspace><backspace><backspace><backspace><backspace><backspace><backspace><backspace><backspace><backspace><backspace><backspace><backspace><backspace><backspace><backspace><backspace><backspace><backspace><backspace><backspace><backspace><backspace><backspace><backspace>imaps://imap-mail.outlook.com:993/Work<enter>6<enter><enter>ydd"
- 
- 
-  macro index,pager   M    "<copy-message><delete-message>"
+#  source ~/.config/mutt/bindwizard.mutt
+
+# HTML Emails
+# macro index,pager \cV "<view-attachments><search>html<enter><view-mailcap><exit>"
+
+# URL View
+  macro index,pager     \cs "<pipe-message> urlscan<Enter>" "call urlscan to extract URLs out of a message"
+  macro attach,compose   \cs "<pipe-entry> urlscan<Enter>" "call urlscan to extract URLs out of a message"

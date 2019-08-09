@@ -1,6 +1,6 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-printf "\n-----------------\nConfiguring Files\n-----------------\n"
+# INSTALL THE DOTFILES
 
 # Path Editing
     echo
@@ -87,9 +87,7 @@ printf "\n-----------------\nConfiguring Files\n-----------------\n"
     if [ -d "~/no-more-secrets" ] 
     then 
       echo
-      echo "  ---------------------------"
       echo "  No More Secrets; Installing"
-      echo "  ---------------------------"
       cd ~/
       git clone https://github.com/bartobri/no-more-secrets.git
       cd ./no-more-secrets
@@ -97,14 +95,13 @@ printf "\n-----------------\nConfiguring Files\n-----------------\n"
       sudo make install
     else 
       echo 
-      echo "  --------------------------------------------------------"
       echo "  No More Secrets is already installed; will not reinstall"
-      echo "  --------------------------------------------------------"
       echo
     fi 
-    
-echo
-echo "  autoremove"
-sudo apt autoremove
-cd ~/dotfiles
-exec fish
+
+# Auto Remove
+    echo
+    echo "  autoremove"
+    sudo apt autoremove
+    cd ~/dotfiles
+    exec fish
