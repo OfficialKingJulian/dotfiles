@@ -1,0 +1,64 @@
+# vim: filetype=muttrc
+
+
+##############################
+#                            #
+#   neomutt  Configuration   #
+#                            #
+##############################
+
+# Folder hooks
+  folder-hook 'julians.email' 'source ~/.mutt/julians.email.muttrc'
+  folder-hook 'julian.hotmail' 'source ~/.mutt/julian.hotmail.muttrc'
+  folder-hook 'officialkingjulian.gmail' 'source ~/.mutt/officialkingjulian.muttrc'
+
+# Default account
+  source ~/.mutt/julians.email.muttrc
+
+# Macros for switching accounts
+  macro index <f2> '<sync-mailbox><enter-command>source ~/.mutt/julians.email.muttrc<enter><change-folder>!<enter>'
+  macro index <f3> '<sync-mailbox><enter-command>source ~/.mutt/julian.hotmail.muttrc<enter><change-folder>!<enter>'
+  macro index <f4> '<sync-mailbox><enter-command>source ~/.mutt/officialkingjulian.muttrc<enter><change-folder>!<enter>'
+
+# Set lots of things 
+  set sort=reverse-date-sent                    # Ordering the mail
+  set sort_aux = last-date-received             # Ordering the mail 
+  set record = ""                               # Disable saving outgoing mail
+# set smtp_authenticators = "plain"             # Don't think, just do
+  set ssl_force_tls = yes                       # Don't think, just do
+  set sleep_time = 0                            # Faster
+  set smart_wrap                                # Smarter
+  set mail_check=60                             # Mailcheck
+  set fast_reply                                # Skip Compose When Replying
+  set forward_quote                             # Include Messages When Forwarding
+  set include                                   # Include Messages When Replying
+  set wait_key = no                             # Do Not Wait
+  set markers = no                              # Disables + at line wrap
+  set menu_scroll                               # Scrolls Whilst Moving
+  set date_format="%d/%m/%y %I:%M%p"
+  set index_format="%2C %zs %?X?A& ? %D %-15.15F %s (%-4.4c)"
+  set implicit_autoview
+  auto_view text/html  application/x-pgp-message # Untested
+  set mailcap_path="mailcap"                     # Mailcap File Location
+  set nomaildir_trash                            # Untested
+  set new_mail_command="notify-send 'New Email' '%n new messages, %u unread.' &"
+
+# Opening HTML Mails
+  alternative_order text/plain text/html
+  auto_view text/html
+
+# Sidebar 'set' Settings
+  set sidebar_visible = yes
+  set sidebar_width = 20
+  set sidebar_short_path = yes
+  set sidebar_next_new_wrap = yes
+  set mail_check_stats
+  set sidebar_folder_indent
+  set sidebar_format = '%B%?F? [%F]?%* %?N?%N/? %?S?%S?'
+
+# Bindings, 
+# Colours and Contacts
+  source    bindings.mutt
+  source     colours.mutt
+  source    contacts.mutt
+
