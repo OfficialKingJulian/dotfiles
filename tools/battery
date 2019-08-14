@@ -1,9 +1,7 @@
 #!/usr/bin/env perl6
 
 # Displays the battery percentage stuff
-	
-# q:x/echo "Hello, World!"/;
+# -- Really not sure why this is Perl6, or if it works. Needs testing.
 
 	my $bat = q:x/upower -i \/org\/freedesktop\/UPower\/devices\/battery_BAT0| grep -E "state|to\ full|percentage"/;
-	
 	say $bat;
