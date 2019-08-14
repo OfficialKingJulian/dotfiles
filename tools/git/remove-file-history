@@ -1,0 +1,44 @@
+#!/bin/bash
+
+# Removes the history
+# of a specified file
+
+#       To Improve; needs to be able to deal
+#                   with more than one file 
+#                   from the 'find' command
+
+echo ""
+echo "Welcome to the file history removal tool"
+
+# Goto Git Path
+  gitpath=`git rev-parse --show-toplevel`
+  cd ${gitpath}
+
+# Get File To Remove
+  echo "What is the name of the file you would like to remove the history of?"
+  read fileremove
+
+# Find that file 
+  FILETOREMOVE=`find . -name "${fileremove}"`
+  FileToRemove=${gitpath}${FILETOREMOVE:1:${#FILETOREMOVE}-1}
+  echo ""
+  echo "File Found:"
+  echo ${FileToRemove}
+
+  echo ""
+  echo "Are you sure this is something you want to do? This is a bit deal, and cannot be undone! "
+  escape=false
+  while [ ${escape} = false ] ; do
+    echo "Type the full word 'yes' to continue with this action, otherwise Ctrl-C to cancel:"
+    read answer
+    if [ ${answer} = "yes" ] || [ ${answer} = "YES" ] || [ ${answer} = "Yes" ] ; then 
+      echo ""
+      echo ""
+      echo "IT'S HAPPENING: "
+      git filter-branch --force --index-filter "git rm --cached --ignore-unmatch ${FileToRemove}" --prune-empty --tag-name-filter cat -- --all 
+      escape=true
+    else 
+      escape=false 
+    fi
+  done
+  
