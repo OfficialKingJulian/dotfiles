@@ -20,7 +20,7 @@ echo "Welcome to the file history removal tool"
 
 # Find that file 
   FILETOREMOVE=`find . -name "${fileremove}"`
-  FileToRemove=${FILETOREMOVE:1:${#FILETOREMOVE}-1}
+  FileToRemove=${FILETOREMOVE:2:${#FILETOREMOVE}-1}
   echo ""
   echo "File Found:"
   echo ${gitpath}${FileToRemove}
