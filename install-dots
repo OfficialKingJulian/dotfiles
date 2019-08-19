@@ -1,107 +1,73 @@
 #!/bin/bash
 
-# INSTALL THE DOTFILES
+  # INSTALL THE DOTFILES
 
-# Path Editing
-    echo
-    echo
-    echo "  ----------------------"
-    echo "       Add to PATH      "
-    echo "  ----------------------"
-    echo
-    # WHY IS THIS NOT WORKING??
-      set fish_user_paths $PWD $fish_user_paths
-      set fish_user_paths $PWD/tools $fish_user_paths
- 
-# Install the Friendly Interactive SHell
-    echo
-    echo "  fish"
-    sudo apt install fish
-    if [ -d "~/.config" ] 
-    then
-      mkdir ~/.config
-      mkdir ~/.config/fish
-    elif [ -d "~/.config/fish" ] 
-    then
-      mkdir ~/.config/fish
-    fi
-    sudo cp ~/dotfiles/fish/config.fish ~/.config/fish/config.fish
-    chsh -s /usr/bin/fish
+        # Here's a list:
+            # Fish 
+            # VIM
+            # neomutt
+      # unzip       # ranger
+      # lynx        # nodejs
+      # perl6       # golang
+      # wget        # cointop
+      # make        # markdown-pdf 
+      # gcc         # apache2
+      # php         # certbot
+      # python2+3   # mysql
 
-# Simple Apps Setup
-    echo
-    echo
-    echo "  UnZip"
-    sudo apt install unzip          # Unzip (duh)
-    echo 
-    echo "  TheFuck"
-    sudo apt install thefuck        # TheFuck (spellcheck)
-    echo 
-    echo "  wget"
-    sudo apt install wget           # wget
-    echo
-    echo "  links"
-    sudo apt install links          # browser
-    echo
-    echo "  make"
-    sudo apt install make           # maker
-    echo
-    echo "  gcc"
-    sudo apt install gcc            # compiler
-    echo
-    echo "  ranger"
-    sudo apt install ranger         # ranger file expl
-    echo
-    echo "  nodejs"
-    sudo apt install nodejs         # NodeJs and NPM
-    echo
-    echo "  perl6"
-    sudo apt install perl6
-    echo
-    echo "  cointop"
-    sudo snap install cointop
-    echo
 
-# Vim setup, with Plug and the .vimrc file
-    echo "  VIM"
-    sudo apt install vim
-    export VIMINIT="source ~/.vim/vimrc"
-    echo
-    curl -fLo ${HOME}/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    sudo cp ${HOME}/dotfiles/vim/.vimrc ${HOME}/.vim/vimrc
-    echo
+echo ""
+echo "Installing Dotfiles"
+echo ""
 
-# NeoMutt setup
-    echo "  NeoMutt"
-    sudo apt install neomutt
-    sudo cp ${HOME}/dotfiles/neomutt/muttrc ${HOME}/.muttrc
-    echo
+# All the 'apt install's 
+# and 'snap install's
+  sudo apt  install   unzip ranger lynx \
+                      nodejs perl6 golang \
+                      wget make markdown-pdf \
+                      gcc apache2 certbot mysql \
+                      python3 python php \
+                      neomutt vim fish 
+  sudo snap install   cointop
 
-# markdown-pdf
-    echo 
-    echo "  Markdown-PDFer"
-    sudo npm install -g markdown-pdf 
+  cd ${HOME}
+# Creating Folder Structure
+  if [ ! -d ".config" ]
+  # .config Folder
+    mkdir .config
+    cd .config
+  elif [ ! -d "fish" ]
+  # FISh Folder
+    mkdir fish
+  elif [ ! -d "no-more-secrets" ]
+  # NMS Folder
+    git clone https://github.com/bartobri/no-more-secrets.git
+    cd ./no-more-secrets
+    make nms
+    sudo make install
+    cd ..
+  elif [ ! -d "ranger" ]
+  # Ranger Folder
+    mkdir ranger
+  elif [ ! -d "mutt" ]
+  # Mutt Folder
+    mkdir mutt
+  else 
+    echo "Done with folder .config"
+  fi
 
-# Fun Stuff
-    echo
-    if [ -d "~/no-more-secrets" ] 
-    then 
-      echo
-      echo "  No More Secrets; Installing"
-      cd ~/
-      git clone https://github.com/bartobri/no-more-secrets.git
-      cd ./no-more-secrets
-      make nms
-      sudo make install
-    else 
-      echo 
-      echo "  No More Secrets is already installed; will not reinstall"
-      echo
-    fi 
+# Moving Folders
+  
 
-# Auto Remove
-    echo
-    echo "  autoremove"
-    sudo apt autoremove
-    cd ~/dotfiles
-    exec fish
+# VIM Plug, for 'Goyo' mainly
+  curl -fLo ${HOME}/.vim/autoload/plug.vim --create-dirs \ 
+  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+
+# End of Install: Auto Remove
+  echo ""
+  echo "Everything's done! Autoremove is now possible:"
+  sudo apt autoremove
+  cd ~/dotfiles
+  exec fish
+
