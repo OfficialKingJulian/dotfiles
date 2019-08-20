@@ -22,5 +22,5 @@ showpath
   done
 
 # Remove the path
-  $HOME/dotfiles/tools/fishremovepath ${pathno}
+  fishremovepath ${pathno}
 
