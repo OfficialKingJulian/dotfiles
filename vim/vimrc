@@ -261,10 +261,11 @@
       endfunc
 
 
+      
 
 
     " File-Specific Things
-      " WEB
+      " Web
         autocmd BufNewFile,BufRead *.html       :so ~/.vim/web.vim
         autocmd BufNewFile,BufRead *.css        :so ~/.vim/web.vim
         autocmd BufNewFile,BufRead *.php        :so ~/.vim/web.vim
@@ -273,9 +274,8 @@
         autocmd BufNewFile,BufRead *.md         :so ~/.vim/txt.vim
         autocmd BufNewFile,BufRead *.markdown   :so ~/.vim/txt.vim
         autocmd BufNewFile,BufRead neomutt*     :so ~/.vim/txt.vim
-
-
-
+      " Notes
+        autocmd BufNewFile,BufRead *.note       :so ~/.vim/not.vim
 
 
 
