@@ -47,6 +47,7 @@
     :set noshowmatch
     :set belloff=all
 
+
   " :Q also works
     :command! Q :q
 
@@ -57,8 +58,10 @@
     :set nolist  
     :set scrolloff=13
 
+
   " Also, tabbing
     :set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
+
 
   " And Shifting
     :set shiftround
@@ -66,13 +69,16 @@
     :set smartindent 
     :set cpoptions  +=I
 
+
   " Also, just set the numbering as default 
     :set number 
     :set relativenumber
 
+
   " Set Showmatch 
     :set showmatch
      hi  MatchParen cterm=bold ctermbg=blue ctermfg=white
+
 
   " Set Highlight Search
     :set hlsearch
@@ -102,18 +108,22 @@
     :nnoremap <c-v> <s-p>
     :vnoremap a <c-$>
     :vnoremap <c-x> d
+
   
   " Ctrl-w+q to save and exit
     :nnoremap <c-w><c-q> :w!<CR>:q<CR>
+
 
   " Ctrl-Z and Ctrl-Y
     :nnoremap <c-z> u
     :nnoremap <c-y> <c-r>
 
+
   " Ctrl-S
     :nnoremap <c-s> :w<CR>
     :vnoremap <c-s> :w<CR>
     :inoremap <c-s> <ESC>:w<CR>
+
 
   " Ctrl-l and Ctrl-h moving 
   " forwards and backwards by
@@ -121,9 +131,11 @@
     ":nnoremap <s-h> b
     ":nnoremap <s-l> w
 
+
   " Ammend Line
     :nnoremap <c-a> <s-$>a
     ":nnoremap <c-o> <CR>o
+
 
   " Make searches case insensitive by default 
   " (as cool as this is, I am going
@@ -131,18 +143,23 @@
     ":nnoremap / /\c
     ":nnoremap ? ?\c
 
+
   " Highlight as pattern is typed
     :set incsearch
 
+
   " Speaking of searches... Ctrl-f
     :nnoremap <c-f> /
+
 
   " Tab Multiple Lines in Visual
     :vnoremap <tab> >vgv
     :vnoremap <s-tab> <vgv
 
+
   " Select Whole Doc
     :vnoremap <c-a> <esc>ggvGa
+
 
   " Easier Split Navigation
     :nnoremap <c-j> <C-W><C-J>
@@ -150,14 +167,17 @@
     :nnoremap <c-l> <C-W><C-L>
     :nnoremap <c-h> <C-W><C-H>
 
+
   " Arrow movements resize splits
     :nnoremap <s-j> :resize +2<CR>
     :nnoremap <s-k> :resize -2<CR>
     :nnoremap <s-h> :vertical resize +2<CR>
     :nnoremap <s-l> :vertical resize -2<CR>
 
+
   " Tab Cycle Through Splits
     :nnoremap <tab> <c-w><c-w>
+
 
   " Remove Arrow Key Functionality
     :noremap <Left> :echo "No left for you!"<CR>
@@ -170,25 +190,33 @@
     :inoremap <Up> <nop>
     :inoremap <Down> <nop>
 
+
   " Remove the... hl functionality...
     :nnoremap h F
     :nnoremap l f
+
 
   " Make hjkl Graphical as default
     :nnoremap j gj
     :nnoremap k gk
   
+    
   " Make things Centered
     :nnoremap G Gzz
   
+
   " 'd' Deletes, Doesn't Cut
     nnoremap d "_d
     vnoremap d "_d
     
+
   " Causes splits to go to the 
   " right and below etc.
     set splitbelow 
     set splitright 
+
+
+
 
 
 
@@ -243,6 +271,9 @@
 
 
 
+
+
+
 " TO DO; THEME AND FILE SPECIFIC SETTINGS
 
 
@@ -261,6 +292,10 @@
       endfunc
 
 
+
+
+
+
       
 
 
@@ -276,6 +311,10 @@
         autocmd BufNewFile,BufRead neomutt*     :so ~/.vim/txt.vim
       " Notes
         autocmd BufNewFile,BufRead *.note       :so ~/.vim/not.vim
+
+
+
+
 
 
 
