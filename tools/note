@@ -6,12 +6,6 @@
 #    and easily create notes and remove them if needed
 
 
-sub showfiles($notename,$notedir) {
-  # Sub to effectively DIR
-    say dir "$notedir/";
-}
-
-
 sub MAIN($note) {
 
   # Notes Dir
@@ -27,26 +21,31 @@ sub MAIN($note) {
   # Checking it all exists
     if not $notedir.IO ~~ :d {
       mkdir $notedir;  say "Created Folder ~/Documents/notes";
-    } elsif "$notedir/$notename.note".IO ~~ :e {
+    } 
+    if "$notedir/$notename.note".IO.e {
       say "Uh-oh, a note of that name already exists";
-      showfiles($notename,$notedir);
+      # EVENTUALLY:
+      # Show the DIR at this point
+      # and get them to try again 
+      # or cancel
+        # say dir $notedir;
     }
   # Create the note
     my $note = open "$notedir/$notename.note", :w;
-    $note.print("Created by Perl6 Note Taker; \nDate: $dt | Time: $time \n");
+    $note.print("Created by Perl6 Note Taker; \nDate: $dt | Time: $time \n\n");
+    # EVENTUALLY: 
+    # Vim highlighting of this
+    # - regex?
     $note.close;
-
-    
+  # Call bash script to run vim
+    my  $bash = q:x/newnote \"$notedir\/$notename.note\"/; say $bash; 
   } elsif $note[0] eq "rm" {
-
-    say "listing notes to rm one";
-    
+    # List Notes
+      say "RM feature coming soon";
   } else {
-
-    say "usage";
-
+    # Usage
+      say "\n Usage";
+      say "     add          Create a new note.";
+      say "     rm     Remove an existing note.\n";
   }
-
 }
-
-
