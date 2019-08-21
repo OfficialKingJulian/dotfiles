@@ -15,15 +15,21 @@ echo "Welcome to the file history removal tool"
   cd ${gitpath}
 
 # Get File To Remove
-  echo "What is the name of the file you would like to remove the history of?"
-  read fileremove
+  # Further improvement;
+  #   Takes multiple arguments
+  if [ ${1} == "" ] ; then
+    echo "What is the name of the file you would like to remove the history of?"
+    read fileremove
+  else
+    fileremove=${1}
+  fi
 
 # Find that file 
   FILETOREMOVE=`find . -name "${fileremove}"`
   FileToRemove=${FILETOREMOVE:2:${#FILETOREMOVE}-1}
   echo ""
   echo "File Found:"
-  echo ${gitpath}${FileToRemove}
+  echo ${gitpath}/${FileToRemove}
 
   echo ""
   echo "Are you sure this is something you want to do? This is a bit deal, and cannot be undone! "
