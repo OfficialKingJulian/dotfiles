@@ -4,8 +4,4 @@ git add .
 echo 'Enter the commit message:'
 read commitmessage
 git commit -m "$commitmessage"
-if [ ${1} == "-f" ] ; then
-  git push -f origin master
-else
-  git push origin master
-fi
+git push ${1} origin master
