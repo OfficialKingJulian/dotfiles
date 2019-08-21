@@ -1,0 +1,13 @@
+ThemeFile=nord
+Transparency=low
+CursorType=block
+CursorBlinks=yes
+Font=Source Code Pro
+FontHeight=14
+FontSmoothing=full
+AllowBlinking=yes
+BoldAsFont=yes
+Printer=
+Columns=166
+Rows=45
+Scrollbar=none
