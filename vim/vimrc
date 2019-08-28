@@ -105,11 +105,15 @@
   " the end of the current line)
   " ALSO added Ctrl-X
     :vnoremap <c-c> y
-    :nnoremap <c-v> <s-p>
+    :inoremap <c-v> <s-p>
     :vnoremap a <c-$>
     :vnoremap <c-x> d
 
+
+  " Visual Visual Mode 
+    :vnoremap <c-v> <c-q>
   
+
   " Ctrl-w+q to save and exit
     :nnoremap <c-w><c-q> :w!<CR>:q<CR>
 

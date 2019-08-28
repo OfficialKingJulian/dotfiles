@@ -39,7 +39,7 @@
   set index_format="%2C %zs %?X?A& ? %D %-15.15F %s (%-4.4c)"
   set implicit_autoview
   auto_view text/html  application/x-pgp-message # Untested
-  set mailcap_path="mailcap"                     # Mailcap File Location
+  set mailcap_path="~/.config/mutt/mailcap"                     # Mailcap File Location
   set nomaildir_trash                            # Untested
   set new_mail_command="notify-send 'New Email' '%n new messages, %u unread.' &"
 
