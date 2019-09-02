@@ -30,6 +30,9 @@ echo ""
                       neomutt vim fish 
   sudo snap install   cointop
 
+# Set System GMT
+  sudo timedatectl set-timezone Europe/London
+
   cd ${HOME}
 # Creating Folder Structure
   if [ ! -d ".config" ]

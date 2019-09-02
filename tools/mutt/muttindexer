@@ -19,23 +19,18 @@
       printf "imaps://imap-mail.outlook.com:993/${Folder}<enter><enter>ydd\" \
             \"Move Item to \'${Folder}\'. Added Automatically by MuttIndexer \"\n" >> $Outputfile
     else 
-      echo ""
-      echo "Error, could not work out what type of email this account is."
+      printf "\n\nFATAL ERROR, could not work out the imap account config."
     fi
   }
 
 # Specify the Output file and Find the Mailbox(es - further dev)
   cd ~/.mutt
   inboxLocations=(`find / -xdev 2>/dev/null -name "Inbox"`)
-  # This is definitely
-  # the part to improve.
-  # I be referencing which .mutt
-  # file is for which config 
-  # each time.
+
 
   # Title 
     echo ""
-    echo Automatically create shortcuts to move mail between folders in neomutt! \(Only working with Outlook and Gmail, currently\)
+    echo "Automatically create shortcuts to move mail between folders in neomutt! \(Only working with Outlook and Gmail, currently\)"
     echo ""
 
 # Loop Through All Mailboxes
