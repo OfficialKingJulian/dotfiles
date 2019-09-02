@@ -7,22 +7,35 @@
 
 # Writes to the File 
   writeToFile() {
-    printf "macro index,pager \cm\c${Shortcut} \"<copy-message>?c"  >> $Outputfile
+    printf "macro index,pager \cm\c${Shortcut} \"<copy-message>?c"                 >> $Outputfile
   # Backspace x42 
     for i in {1..42} ; do
-      printf "<backspace>" >> $Outputfile
+      printf "<backspace>"                                                         >> $Outputfile
     done
-    printf "imaps://imap-mail.outlook.com:993/${Folder}<enter><enter>ydd\" \"Move Item to \'${Folder}\'. Added Automatically by MuttIndexer \"" >> $Outputfile
-    echo "" >> $Outputfile
+    if [[ ${InboxLocation} == *"gmail"* ]] ; then
+      printf "imaps://imap.gmail.com:993/${Folder}<enter><enter>ydd\" \
+            \"Move Item to \'${Folder}\'. Added Automatically by MuttIndexer \"\n" >> $Outputfile
+    elif [[ ${InboxLocation} == *"outlook"* ]] ; then
+      printf "imaps://imap-mail.outlook.com:993/${Folder}<enter><enter>ydd\" \
+            \"Move Item to \'${Folder}\'. Added Automatically by MuttIndexer \"\n" >> $Outputfile
+    else 
+      echo ""
+      echo "Error, could not work out what type of email this account is."
+    fi
   }
 
 # Specify the Output file and Find the Mailbox(es - further dev)
   cd ~/.mutt
   inboxLocations=(`find / -xdev 2>/dev/null -name "Inbox"`)
+  # This is definitely
+  # the part to improve.
+  # I be referencing which .mutt
+  # file is for which config 
+  # each time.
 
   # Title 
     echo ""
-    echo Automatically create shortcuts to move mail between folders in neomutt! \(Only working with Outlook, currently\)
+    echo Automatically create shortcuts to move mail between folders in neomutt! \(Only working with Outlook and Gmail, currently\)
     echo ""
 
 # Loop Through All Mailboxes
@@ -32,18 +45,20 @@
   # Get Mailbox
     cd $InboxLocation
     cd ..
-    # We're  at  the 
+    # We're  in  the 
     # right location
 
   # Specify Output File - NOT THIS SIMPLE
-    counter=${counter}+1
+    counter=$((counter+1))
     Outputfile="${HOME}/.mutt/bindings-acct-${counter}.mutt"
    
   # Test For Multiple Mailboxes
     if [ ${#inboxLocations[@]}>1 ] ; then 
+      printf "\n\n\n\n"
       echo "Multiple Mailboxes Found: "
     else
-      echo "One mailbox; this should be easy!"
+      printf "\n\n\n\n"
+      echo "One Mailbox Found To Configure: "
     fi
     echo $PWD
     echo ""
@@ -68,7 +83,6 @@
         # cd into nested folder
         cd $folder 
         for folder2 in * ; do
-
           if [ -d ${folder2} ] ; then
             echo Assign a shortcut to ${folder}/${folder2} - leave blank to skip
             read Shortcut
@@ -82,15 +96,8 @@
               writeToFile
             fi
           fi
-
         done
         cd ..
-        # cd back out
-
       fi
-
     done
-
   done
-
-
