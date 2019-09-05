@@ -203,6 +203,8 @@
   " Make hjkl Graphical as default
     :nnoremap j gj
     :nnoremap k gk
+    :vnoremap j gj
+    :vnoremap k gk
   
     
   " Make things Centered
@@ -234,14 +236,14 @@
 
   " THIS IS WHAT BREAKS THE THING 
   " Status Line
-    "function! GitBranch()
-      "return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
-    "endfunc
+    function! GitBranch()
+      return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+    endfunc
 
-    "function! StatuslineGit()
-      "let l:branchname = GitBranch()
-      "return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
-    "endfunc
+    function! StatuslineGit()
+      let l:branchname = GitBranch()
+      return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
+    endfunc
                       " THIS IS STILL BROKEN
                       " Fixing Odd Ghost Char issue https://stackoverflow.com/questions/6987317/
                       " while-moving-the-cursor-across-a-vim-process-open-in-a-tmux-session-every-now-a
@@ -256,7 +258,7 @@
     set statusline+=Julian\ VIM
     set statusline+=\ \ \ \ \ \ 
     set statusline+=%F%m%r%h%w\ 
-    "set statusline+=%{StatuslineGit()}
+    set statusline+=%{StatuslineGit()}
     set statusline+=\ \ \ \ \ \ 
     set statusline+=File\ Type\:\ %Y
     set statusline+=\ \ \ \ \ \ 
@@ -267,6 +269,10 @@
     set statusline+=\ \ \ \ \ 
 
     
+
+
+
+
 
 
 

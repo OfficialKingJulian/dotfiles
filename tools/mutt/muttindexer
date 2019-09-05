@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#                            muttindexer
+
 # Only deals with folder names without 
 # spaces. Also only goes to one level
 # of folder depth; this was all I needed
@@ -61,7 +63,7 @@
   # Loop through folder
     for folder in * ; do
 
-      if [ -d ${folder} ]; then
+      if [[ -d "${folder}" ]]; then
 
         echo Assign a shortcut to ${folder} - leave blank to skip
         read Shortcut
@@ -71,24 +73,26 @@
           echo ""
         else 
         # Call Write To File
-          Folder=${folder}
+          Folder="${folder}"
           writeToFile
+          echo ""
         fi
 
         # cd into nested folder
         cd $folder 
         for folder2 in * ; do
-          if [ -d ${folder2} ] ; then
+          if [[ -d "${folder2}" ]] ; then
             echo Assign a shortcut to ${folder}/${folder2} - leave blank to skip
             read Shortcut
-            if [ -z $Shortcut ] ; then 
+            if [[ -z "$Shortcut" ]] ; then 
             # Skip
               echo Skip 
               echo ""
             else 
             # Call Write To File
-              Folder=${folder}/${folder2}
+              Folder="${folder}/${folder2}"
               writeToFile
+              echo ""
             fi
           fi
         done
