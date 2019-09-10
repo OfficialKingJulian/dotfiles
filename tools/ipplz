@@ -1,0 +1,5 @@
+#!/bin/bash 
+
+# Get Current IP
+  printf "Your IP is: "
+  curl ifconfig.me
