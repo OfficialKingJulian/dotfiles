@@ -11,6 +11,7 @@
   folder-hook 'julians.email' 'source ~/.mutt/julians.email.muttrc'
   folder-hook 'julian.hotmail' 'source ~/.mutt/julian.hotmail.muttrc'
   folder-hook 'officialkingjulian.gmail' 'source ~/.mutt/officialkingjulian.muttrc'
+  folder-hook 'kingjulian.xyz' 'source ~/.mutt/kingjulian.xyz.muttrc'
 
 # Default account
   source ~/.mutt/julians.email.muttrc
@@ -19,6 +20,7 @@
   macro index <f2> '<sync-mailbox><enter-command>source ~/.mutt/julians.email.muttrc<enter><change-folder>!<enter>'
   macro index <f3> '<sync-mailbox><enter-command>source ~/.mutt/julian.hotmail.muttrc<enter><change-folder>!<enter>'
   macro index <f4> '<sync-mailbox><enter-command>source ~/.mutt/officialkingjulian.muttrc<enter><change-folder>!<enter>'
+  macro index <f5> '<sync-mailbox><enter-command>source ~/.mutt/kingjulian.xyz.muttrc<enter><change-folder>!<enter>'
 
 # Set lots of things 
   set sort=reverse-date-sent                    # Ordering the mail
