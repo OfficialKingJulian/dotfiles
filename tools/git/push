@@ -1,10 +1,19 @@
 #!/bin/bash
 
-git add .
-commitmessage="${@:1}"
-if [ ${1} = "" ] ; then
-  echo 'Enter the commit message:'
-  read commitmessage
+  git add .
+
+  if [[ ${1} = "-*" ]] ; then
+    commitmessage="${@:2}"
+  elif [[ ${1} = "" ]] ; then
+    echo 'Enter the commit message:'
+    read commitmessage
+  else 
+    commitmessage="${@:1}"
+  fi
+  git commit -m "$commitmessage"
+
+if [ ${1} = "-*" ] ; then
+  git push $1 origin master
+  exit 0
 fi
-git commit -m "$commitmessage"
 git push origin master
