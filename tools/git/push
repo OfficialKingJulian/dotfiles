@@ -1,7 +1,10 @@
 #!/bin/bash
 
 git add .
-echo 'Enter the commit message:'
-read commitmessage
+commitmessage="${@:1}"
+if [ ${1} = "" ] ; then
+  echo 'Enter the commit message:'
+  read commitmessage
+fi
 git commit -m "$commitmessage"
 git push ${1} origin master
