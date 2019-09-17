@@ -8,8 +8,7 @@
     # Make the dirs if not existin
       if [ ! -d "${HOME}/twitter" ] ; then mkdir ${HOME}/twitter ; fi
       if [ ! -d "${HOME}/twitter/scheduled" ] ; then mkdir ${HOME}/twitter/scheduled ; fi
-#     echo ${@:2} > ${HOME}/twitter/scheduled/${2}-${fullscheduledate}
-      echo ${@:2} > ${HOME}/twitter/scheduled/${2}-2019-09-17
+      echo ${@:2} > ${HOME}/twitter/scheduled/${2}-${fullscheduledate}
     # Getting Date
       today=$(date +%Y-%m-%d)
       hours=$(shuf -i 0-23 -n 1)

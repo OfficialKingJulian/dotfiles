@@ -4,7 +4,7 @@
   thedate=$(date +'%Y-%m-%d')
   cd ${HOME}/twitter/scheduled 
   thefile=$(find . -name "*${thedate}*")
-  ${HOME}/dotfiles/tools/twitter/tweet $(cat ${thefile})
+  /usr/local/bin/twitter set $(cat ${thefile})
 
 # Remove the right tweet
   hours=$(date +%H)
