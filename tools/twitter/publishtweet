@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Publishes Scheduled Tweet 
+  thedate=$(date +'%Y-%m-%d')
+  cd ${HOME}/twitter/scheduled 
+  thefile=$(find . -name "*${thedate}*")
+  ${HOME}/dotfiles/tools/twitter/tweet $(cat ${thefile})
+
+# Remove the right tweet
+  hours=$(date +%H)
+  days=$(date +%d)
+  mons=$(date +%m)
+  ( crontab -l | grep -v -F " ${hours} ${days} ${mons} * ${HOME}/dotfiles/tools/twitter/" ) | crontab -

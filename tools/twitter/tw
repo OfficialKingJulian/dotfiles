@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# Just calls Twitter ansi by default
+  twitter ${1} ${2} -f ansi

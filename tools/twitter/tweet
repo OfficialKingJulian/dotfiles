@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Better CLI Tweeting and Random Scheduling
+
+  if [ ${1} = "schedule" ] ; then
+      dateahead=$(shuf -i 5-30 -n 1) # Gen Random Date X Days In Future
+      fullscheduledate=$(date -d "${today} + $dateahead days" +'%Y-%m-%d')
+    # Make the dirs if not existin
+      if [ ! -d "${HOME}/twitter" ] ; then mkdir ${HOME}/twitter ; fi
+      if [ ! -d "${HOME}/twitter/scheduled" ] ; then mkdir ${HOME}/twitter/scheduled ; fi
+#     echo ${@:2} > ${HOME}/twitter/scheduled/${2}-${fullscheduledate}
+      echo ${@:2} > ${HOME}/twitter/scheduled/${2}-2019-09-17
+    # Getting Date
+      today=$(date +%Y-%m-%d)
+      hours=$(shuf -i 0-23 -n 1)
+      minutes=$(shuf -i 0-59 -n 1)
+      days=$(date -d "${today} + $dateahead days" +'%d')
+      mons=$(date -d "${today} + $dateahead days" +'%m')
+      cronjob="    ${minutes} ${hours} ${days} ${mons} * ${HOME}/dotfiles/tools/twitter/publishtweet"
+
+    # Adding Crontab
+      ( crontab -l | grep -v -F "    ${minutes} ${hours} ${days} ${mons} * ${HOME}/dotfiles/tools/twitter/publishtweet" ; echo "$cronjob" ) | crontab -
+  else 
+    # Normies
+      twitter set ${@:1}
+  fi
