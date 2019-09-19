@@ -5,6 +5,7 @@
   cd ${HOME}/twitter/scheduled 
   thefile=$(find . -name "*${thedate}*")
   /usr/local/bin/twitter set $(cat ${thefile})
+  rm ${thefile}
 
 # Remove the right tweet
   hours=$(date +%H)

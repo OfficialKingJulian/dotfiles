@@ -1,5 +1,0 @@
-#!/bin/bash
-
-ssdt=$(cat tweet.conf | grep "show-scheduled-datetime")
-showscheduleddatetime="$(cut -d' ' -f4 <<<"${ssdt}")"
-echo ${showscheduleddatetime}
