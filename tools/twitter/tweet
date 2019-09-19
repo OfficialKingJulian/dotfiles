@@ -2,41 +2,53 @@
 
 # Better CLI Tweeting and Random Scheduling
 
-  if [ ${1} = "schedule" ] ; then
-      dateahead=$(shuf -i 5-30 -n 1) # Gen Random Date X Days In Future
-      fullscheduledate=$(date -d "${today} + $dateahead days" +'%Y-%m-%d')
+  function usage {
+    echo ""
+    echo "Scheduling Tweets: "
+    echo "  schedule"
+    exit 0
+  }
 
-    # Make the dirs if not existin
-      if [ ! -d "${HOME}/twitter" ] ; then mkdir ${HOME}/twitter ; fi
-      if [ ! -d "${HOME}/twitter/scheduled" ] ; then mkdir ${HOME}/twitter/scheduled ; fi
-      echo ${@:2} > ${HOME}/twitter/scheduled/${2}-${fullscheduledate}
+  if [ ${1} = "--schedule" ] || [ ${1} = "-s" ] ; then
+      if [ ${2} = "random" ] ; then 
+          dateahead=$(shuf -i 5-30 -n 1) # Gen Random Date X Days In Future
+          fullscheduledate=$(date -d "${today} + $dateahead days" +'%Y-%m-%d')
 
-    # Getting Date
-      today=$(date +%Y-%m-%d)
-      hours=$(shuf -i 0-23 -n 1)
-      minutes=$(shuf -i 0-59 -n 1)
-      days=$(date -d "${today} + $dateahead days" +'%d')
-      mons=$(date -d "${today} + $dateahead days" +'%m')
-      cronjob="       ${minutes} ${hours} ${days} ${mons} * ${HOME}/dotfiles/tools/twitter/publishtweet  # ... ${2} ${3} ${4} ${5} ..."
+        # Make the dirs if not existin
+          if [ ! -d "${HOME}/twitter" ] ; then mkdir ${HOME}/twitter ; fi
+          if [ ! -d "${HOME}/twitter/scheduled" ] ; then mkdir ${HOME}/twitter/scheduled ; fi
+          echo ${@:3} > ${HOME}/twitter/scheduled/${3}-${fullscheduledate}
 
-    # Adding Crontab
-      ( crontab -l | grep -v -F "    ${minutes} ${hours} ${days} ${mons} * ${HOME}/dotfiles/tools/twitter/publishtweet" ; echo "$cronjob" ) | crontab -
+        # Getting Date
+          today=$(date +%Y-%m-%d)
+          hours=$(shuf -i 0-23 -n 1)
+          minutes=$(shuf -i 0-59 -n 1)
+          days=$(date -d "${today} + $dateahead days" +'%d')
+          mons=$(date -d "${today} + $dateahead days" +'%m')
+          cronjob="     ${minutes} ${hours} ${days} ${mons} * ${HOME}/dotfiles/tools/twitter/publishtweet  # ... ${2} ${3} ${4} ${5} ..."
 
-    # Check Setting in tweet.conf
-      showtweetonoffline=$(cat tweet.conf | grep "show-scheduled-datetime")
-      showtweetonoff="$(cut -d' ' -f4 <<<"${showtweetonoffline}")"
-      if [ ${#minutes} = 1 ] ; then minutes=0${minutes} ; fi
-      if [ ${showtweetonoff} = "yes" ] ; then 
-        echo "Tweet scheduled: ${days}/${mons} at ${hours}:${minutes}" 
-      elif [ ${showtweetonoff} = "date" ] ; then
-        echo "Tweet scheduled: ${days}/${mons}"
-      elif [ ${showtweetonoff} = "time" ] ; then
-        echo "Tweet scheduled: ${hours}:${minutes}"
-      else 
-        echo "Tweet scheduled."
+        # Adding Crontab
+          ( crontab -l | grep -v -F "    ${minutes} ${hours} ${days} ${mons} * ${HOME}/dotfiles/tools/twitter/publishtweet" ; echo "$cronjob" ) | crontab -
+
+        # Check Setting in tweet.conf
+          showtweetonoffline=$(cat tweet.conf | grep "show-scheduled-datetime")
+          showtweetonoff="$(cut -d' ' -f4 <<<"${showtweetonoffline}")"
+          if [ ${#minutes} = 1 ] ; then minutes=0${minutes} ; fi
+          if [ ${showtweetonoff} = "yes" ] ; then 
+            echo "Tweet scheduled: ${days}/${mons} at ${hours}:${minutes}" 
+          elif [ ${showtweetonoff} = "date" ] ; then
+            echo "Tweet scheduled: ${days}/${mons}"
+          elif [ ${showtweetonoff} = "time" ] ; then
+            echo "Tweet scheduled: ${hours}:${minutes}"
+          else 
+            echo "Tweet scheduled."
+          fi
+      else
+        # Handle Valid Date Input
+        # If None, Prompt
+        echo "Whoopsie XD"
       fi
-  else 
-
-    # Normies
-      twitter set ${@:1}
+    # Usage Segment
+  elif [ ${1} = "-h" ] || [ ${1} "-help" ] ; then usage
+  else twitter set ${@:1}
   fi
