@@ -5,10 +5,12 @@
   cd ${HOME}/twitter/scheduled 
   thefile=$(find . -name "*${thedate}*")
   /usr/local/bin/twitter set $(cat ${thefile})
-  rm ${thefile}
 
-# Remove the right tweet
+# Remove The Right Tweet
   hours=$(date +%H)
   days=$(date +%d)
   mons=$(date +%m)
   ( crontab -l | grep -v -F " ${hours} ${days} ${mons} * ${HOME}/dotfiles/tools/twitter/" ) | crontab -
+
+# Delete The File Too!
+  rm ${thefile}

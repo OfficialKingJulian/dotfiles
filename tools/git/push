@@ -12,7 +12,7 @@
   fi
   git commit -m "$commitmessage"
 
-if [ ${1} = "-*" ] ; then
+if [[ ${1} = "-*" ]] ; then
   git push $1 origin master
   exit 0
 fi
