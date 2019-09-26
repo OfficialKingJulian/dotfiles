@@ -1,8 +1,13 @@
 #!/bin/bash
 
+# Add
   git add .
 
-  if [[ ${1} = "-*" ]] ; then
+# Regex For Flags
+  reg="^-.*"
+
+# Get Commit Message
+  if [[ ${1} =~ ${reg} ]] ; then
     commitmessage="${@:2}"
   elif [[ ${1} = "" ]] ; then
     echo 'Enter the commit message:'
@@ -12,8 +17,12 @@
   fi
   git commit -m "$commitmessage"
 
-if [[ ${1} = "-*" ]] ; then
-  git push $1 origin master
-  exit 0
-fi
-git push origin master
+# Get Current Branch
+  branch=$(git rev-parse --symbolic-full-name --abbrev-ref HEAD)
+
+# Push It
+  if [[ ${1} =~ ${reg} ]] ; then
+    git push ${1} origin ${branch}
+  else 
+    git push origin ${branch}
+  fi

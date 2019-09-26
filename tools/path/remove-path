@@ -3,10 +3,10 @@
 # https://github.com/fish-shell/fish-shell/issues/2639
 # This took too long to find an answer to... 
 
-showpath
+show-path
 
 # Get number of paths
-  nopaths=$(echo `showpath |& tail -1` | cut -d' ' -f1)
+  nopaths=$(echo `show-path |& tail -1` | cut -d' ' -f1)
 
   while true; do
     echo Please enter the number of the path you want to remove \(Ctrl-C to cancel\): 
@@ -17,7 +17,7 @@ showpath
       echo
       echo You must enter a number, it must be a valid number!
       echo
-      showpath
+      show-path
     fi
   done
 
