@@ -1,6 +1,0 @@
-#!/bin/bash
-
-# TOY - Thinking Of You
-
-  neomutt -s "This is a test" -F toy.muttrc officialkingjulian@gmail.com < message.txt
-

@@ -59,18 +59,28 @@ echo ""
     echo "Done with folder .config"
   fi
 
-# Moving Folders
-  
-
-# VIM Plug, for 'Goyo' mainly
-  curl -fLo ${HOME}/.vim/autoload/plug.vim --create-dirs \ 
-  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-
 # End of Install: Auto Remove
   echo ""
   echo "Everything's done! Autoremove is now possible:"
   sudo apt autoremove
   cd ~/dotfiles
-  exec fish
+# exec fish
+
+
+# VIMSTALL from 
+#   https://github.com/OfficialKingJulian/vim
+    cd ${HOME}/
+    mkdir tempvim
+    cd tempvim
+    git clone https://github.com/OfficialKingJulian/vim
+  # Run Installation File
+    ${HOME}/tempvim/vim/vimstall
+  # Remove Supporting Files
+    sudo rm -r ${HOME}/tempvim
+    echo ""
+    echo "vim should be successfully installed"
+
+
+
+
 

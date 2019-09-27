@@ -19,4 +19,8 @@ echo ""
   cd ${HOME}
   sudo rm -r .config
 
-  
+# VIMuninstall
+  sudo rm -r ${HOME}/.config/vim  
+  sudo rm -r ${HOME}/.vim
+
+
