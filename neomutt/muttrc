@@ -44,6 +44,9 @@
   set mailcap_path="~/.config/mutt/mailcap"                     # Mailcap File Location
   set nomaildir_trash                            # Untested
   set new_mail_command="notify-send 'New Email' '%n new messages, %u unread.' &"
+  
+  set pager_index_lines   = 10    # number of index lines to show
+  set pager_context       = 3     # number of context lines to show
 
 # Opening HTML Mails
   alternative_order text/plain text/html
