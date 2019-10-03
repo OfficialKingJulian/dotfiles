@@ -8,45 +8,45 @@
 ##############################
 
 # Folder hooks
-  folder-hook 'julians.email' 'source ~/.mutt/julians.email.muttrc'
+# folder-hook 'julians.email' 'source ~/.mutt/julians.email.muttrc'
   folder-hook 'julian.hotmail' 'source ~/.mutt/julian.hotmail.muttrc'
   folder-hook 'officialkingjulian.gmail' 'source ~/.mutt/officialkingjulian.muttrc'
-  folder-hook 'kingjulian.xyz' 'source ~/.mutt/kingjulian.xyz.muttrc'
+# folder-hook 'kingjulian.xyz' 'source ~/.mutt/kingjulian.xyz.muttrc'
 
 # Default account
-  source ~/.mutt/julians.email.muttrc
+  source ~/.mutt/julian.hotmail.muttrc
 
 # Macros for switching accounts
-  macro index <f2> '<sync-mailbox><enter-command>source ~/.mutt/julians.email.muttrc<enter><change-folder>!<enter>'
-  macro index <f3> '<sync-mailbox><enter-command>source ~/.mutt/julian.hotmail.muttrc<enter><change-folder>!<enter>'
-  macro index <f4> '<sync-mailbox><enter-command>source ~/.mutt/officialkingjulian.muttrc<enter><change-folder>!<enter>'
-  macro index <f5> '<sync-mailbox><enter-command>source ~/.mutt/kingjulian.xyz.muttrc<enter><change-folder>!<enter>'
+# macro index <f4> '<sync-mailbox><enter-command>source ~/.mutt/julians.email.muttrc<enter><change-folder>!<enter>'
+  macro index <f2> '<sync-mailbox><enter-command>source ~/.mutt/julian.hotmail.muttrc<enter><change-folder>!<enter>'
+  macro index <f3> '<sync-mailbox><enter-command>source ~/.mutt/officialkingjulian.muttrc<enter><change-folder>!<enter>'
+# macro index <f5> '<sync-mailbox><enter-command>source ~/.mutt/kingjulian.xyz.muttrc<enter><change-folder>!<enter>'
 
-# Set lots of things 
-  set sort=reverse-date-sent                    # Ordering the mail
-  set sort_aux = last-date-received             # Ordering the mail 
-  set record = ""                               # Disable saving outgoing mail
-# set smtp_authenticators = "plain"             # Don't think, just do
-  set ssl_force_tls = yes                       # Don't think, just do
-  set sleep_time = 0                            # Faster
-  set smart_wrap                                # Smarter
-  set mail_check=60                             # Mailcheck
-  set fast_reply                                # Skip Compose When Replying
-  set forward_quote                             # Include Messages When Forwarding
-  set include                                   # Include Messages When Replying
-  set wait_key = no                             # Do Not Wait
-  set markers = no                              # Disables + at line wrap
-  set menu_scroll                               # Scrolls Whilst Moving
+# Set lots of things
+  set sort=reverse-date-sent                     # Ordering the mail
+  set sort_aux = last-date-received              # Ordering the mail
+  set record = ""                                # Disable saving outgoing mail
+  set ssl_force_tls = yes                        # Don't think, just do
+  set sleep_time = 0                             # Faster
+  set smart_wrap                                 # Smarter
+  set mail_check=60                              # Mailcheck
+  set fast_reply                                 # Skip Compose When Replying
+  set forward_quote                              # Include Messages When Forwarding
+  set include                                    # Include Messages When Replying
+  set wait_key = no                              # Do Not Wait
+  set markers = no                               # Disables + at line wrap
+  set menu_scroll                                # Scrolls Whilst Moving
   set date_format="%d/%m/%y %I:%M%p"
   set index_format="%2C %zs %?X?A& ? %D %-15.15F %s (%-4.4c)"
   set implicit_autoview
   auto_view text/html  application/x-pgp-message # Untested
-  set mailcap_path="~/.config/mutt/mailcap"                     # Mailcap File Location
+  set mailcap_path="~/.config/mutt/mailcap"      # Mailcap File Location
   set nomaildir_trash                            # Untested
   set new_mail_command="notify-send 'New Email' '%n new messages, %u unread.' &"
-  
-  set pager_index_lines   = 10    # number of index lines to show
-  set pager_context       = 3     # number of context lines to show
+  set pager_index_lines   = 10                   # number of index lines to show
+  set pager_context       = 3                    # number of context lines to show
+  set editor="vim -c 'set expandtab textwidth=50 | normal }j'"
+
 
 # Opening HTML Mails
   alternative_order text/plain text/html
