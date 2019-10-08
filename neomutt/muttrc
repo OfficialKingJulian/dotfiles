@@ -45,7 +45,7 @@
   set new_mail_command="notify-send 'New Email' '%n new messages, %u unread.' &"
   set pager_index_lines   = 10                   # number of index lines to show
   set pager_context       = 3                    # number of context lines to show
-  set editor="vim -c 'set expandtab textwidth=50 | normal }j'"
+# set editor="vim -c 'set expandtab textwidth=50 | normal }j'"
 
 
 # Opening HTML Mails
