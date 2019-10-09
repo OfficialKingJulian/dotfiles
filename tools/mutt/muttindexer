@@ -9,25 +9,25 @@
 
 # Writes to the File 
   writeToFile() {
-    printf "macro index,pager \cm\c${Shortcut} \"<copy-message>?c"                 >> $Outputfile
+    printf "macro index,pager \cm\c%s\"<copy-message>?c" "${Shortcut}"             >> "$Outputfile"
   # Backspace x42 
     for i in {1..42} ; do
-      printf "<backspace>"                                                         >> $Outputfile
+      printf "<backspace>"                                                         >> "$Outputfile"
     done
     if [[ ${InboxLocation} == *"gmail"* ]] ; then
       printf "imaps://imap.gmail.com:993/${Folder}<enter><enter>ydd\" \
-            \"Move Item to \'${Folder}\'. Added Automatically by MuttIndexer \"\n" >> $Outputfile
+            \"Move Item to \'${Folder}\'. Added Automatically by MuttIndexer \"\n" >> "$Outputfile"
     elif [[ ${InboxLocation} == *"outlook"* ]] ; then
       printf "imaps://imap-mail.outlook.com:993/${Folder}<enter><enter>ydd\" \
-            \"Move Item to \'${Folder}\'. Added Automatically by MuttIndexer \"\n" >> $Outputfile
+            \"Move Item to \'${Folder}\'. Added Automatically by MuttIndexer \"\n" >> "$Outputfile"
     else 
       printf "\n\nFATAL ERROR, could not work out the imap account config."
     fi
   }
 
 # Specify the Output file and Find the Mailbox(es - further dev)
-  cd ~/.mutt
-  inboxLocations=(`find / -xdev 2>/dev/null -name "Inbox"`)
+  cd ~/.mutt || exit
+  inboxLocations=($(find / -xdev 2>/dev/null -name "Inbox"))
 
 
   # Title 
@@ -40,8 +40,8 @@
   for InboxLocation in "${inboxLocations[@]}"; do
 
   # Get Mailbox
-    cd $InboxLocation
-    cd ..
+    cd "$InboxLocation" || exit
+    cd .. || exit
     # We're  in  the 
     # right location
 
@@ -50,14 +50,15 @@
     Outputfile="${HOME}/.mutt/bindings-acct-${counter}.mutt"
    
   # Test For Multiple Mailboxes
-    if [ ${#inboxLocations[@]}>1 ] ; then 
+  # if [ ${#inboxLocations[@]}>1 ] ; then
+    if [[ ${#inboxLocations[@]} -gt 1 ]] ; then 
       printf "\n\n\n\n"
       echo "Multiple Mailboxes Found: "
     else
       printf "\n\n\n\n"
       echo "One Mailbox Found To Configure: "
     fi
-    echo $PWD
+    echo "$PWD"
     echo ""
 
   # Loop through folder
@@ -65,9 +66,9 @@
 
       if [[ -d "${folder}" ]]; then
 
-        echo Assign a shortcut to ${folder} - leave blank to skip
-        read Shortcut
-        if [ -z $Shortcut ] ; then 
+        echo Assign a shortcut to "${folder}" - leave blank to skip
+        read -r Shortcut
+        if [[ -z $Shortcut ]] ; then 
         # Skip
           echo Skip 
           echo ""
@@ -79,11 +80,11 @@
         fi
 
         # cd into nested folder
-        cd $folder 
+        cd "$folder" || exit
         for folder2 in * ; do
           if [[ -d "${folder2}" ]] ; then
-            echo Assign a shortcut to ${folder}/${folder2} - leave blank to skip
-            read Shortcut
+            echo Assign a shortcut to "${folder}"/"${folder2}" - leave blank to skip
+            read -r Shortcut
             if [[ -z "$Shortcut" ]] ; then 
             # Skip
               echo Skip 
