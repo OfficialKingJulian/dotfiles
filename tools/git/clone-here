@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Clones Git Repo To Current Dir
+
+# clone
+  git clone "$1"
+# get cloned dir
+  currdir=$(ls -t | head -1)
+# cp contents
+  sudo cp -r ${currdir}/* .
+  sudo cp -r ${currdir}/.git .
+# change permissions
+  sudo chown -R julian:julian ./*
+  sudo chown -R julian:julian .git
+# thank you and goodbye
