@@ -3,3 +3,4 @@
 # Aliases
   alias cls='clear'
   alias mutt='neomutt'
+  alias ll='ls -l'
