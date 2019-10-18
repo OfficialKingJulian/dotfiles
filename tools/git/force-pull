@@ -1,0 +1,8 @@
+#!/bin/bash
+
+git fetch --all
+if [[ ! -z ${1} ]] ; then
+  git reset --hard origin/master
+else 
+  git reset --hard origin/${1}
+fi
