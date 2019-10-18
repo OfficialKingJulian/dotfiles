@@ -2,15 +2,15 @@
 
 
 # Basic Config
-  set $mod Mod1               # set mod key
-  font pango:monospace 9      # set font
-  bindsym $mod+x exec i3lock  # i3lock shortcut
-  floating_modifier $mod      # floating modifier
+  set $mod Mod1
+  font pango:monospace 9
+  bindsym $mod+x exec i3lock
+  floating_modifier $mod
   bindsym $mod+Return exec i3-sensible-terminal
-  bindsym $mod+q kill         # mod q = quit curr
-# bindsym $mod+d exec dmenu_run                         # old style dmenu
-  bindsym $mod+d exec --no-startup-id i3-dmenu-desktop  # new... apparently
- 
+  bindsym $mod+q kill
+# bindsym $mod+d exec dmenu_run
+  bindsym $mod+d exec --no-startup-id i3-dmenu-desktop   
+  
 # Restart i3 (e.g. apply changes!)
   bindsym $mod+Shift+r restart
 
