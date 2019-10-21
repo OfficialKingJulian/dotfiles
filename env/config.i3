@@ -1,4 +1,5 @@
 
+# vim:filetype=i3
 
 
 # Basic Config
