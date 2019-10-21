@@ -4,10 +4,12 @@
 
 # Basic Config
   set $mod Mod1
+  set $sup Mod4
+  set $ter i3-sensible-terminal
   font pango:monospace 9
   bindsym $mod+x exec i3lock
   floating_modifier $mod
-  bindsym $mod+Return exec i3-sensible-terminal
+  bindsym $mod+Return exec $ter
   bindsym $mod+q kill
 # bindsym $mod+d exec dmenu_run
   bindsym $mod+d exec --no-startup-id i3-dmenu-desktop   
@@ -76,7 +78,7 @@
 # Workstation Vars
   set $ws1  "1: &#xf120; Terminal"
   set $ws2  "2: &#xf269; Browser"
-  set $ws3  "3: "
+  set $ws3  "3: &#xf07b; Files"
   set $ws4  "4: "
   set $ws5  "5: &#xf233; Local"
   set $ws6  "6: &#xf09b; Git"
@@ -109,8 +111,16 @@
   bindsym $mod+Shift+9 move container to workspace $ws9
   bindsym $mod+Shift+0 move container to workspace $ws0
 
+# Application Launch Binds
+  bindsym $sup+e exec nautilus
+  bindsym $sup+f exec firefox
+  bindsym $sup+r exec $ter -name ranger -e ranger
+  bindsym $sup+m exec $ter -name neomutt -e neomutt
+
+
 # Workspace Specific Applications
   assign [class="ProtonMail Bridge"] $ws0
+  assign [class="Nautilus" ] $ws3
   for_window [class="Spotify"] move to workspace $ws9
 
 # Reload Config File
@@ -140,7 +150,9 @@
   bindsym XF86AudioPrev exec playerctl previous # prev
 
 # Exec Files; Startup and _Always
-  exec spotify
+  exec_always --no-startup-id "i3-msg \"9: &#xf001; Music; append_layout /home/user/julian/.config/i3/workspace-1.json\""
+  exec_always spotify
+  exec_always $ter -name cava -e ./cava
   exec protonmail-bridge
   exec_always feh --bg-scale /home/julian/Pictures/Wallpapers/mountain.jpg
 
