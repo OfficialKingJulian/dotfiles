@@ -7,7 +7,8 @@
   set $sup Mod4
   set $ter i3-sensible-terminal
   font pango:monospace 9
-  bindsym $mod+x exec i3lock
+# bindsym $mod+x exec i3lock
+  bindsym $mod+x exec ~/.config/i3/i3locker 
   floating_modifier $mod
   bindsym $mod+Return exec $ter
   bindsym $mod+q kill
@@ -121,7 +122,7 @@
 # Workspace Specific Applications
   assign [class="ProtonMail Bridge"] $ws0
   assign [class="Nautilus" ] $ws3
-  for_window [class="Spotify"] move to workspace $ws9
+# for_window [class="Spotify"] move to workspace $ws9
 
 # Reload Config File
  #bindsym $mod+Shift+c reload
@@ -132,7 +133,10 @@
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
   bar {
-    status_command i3status
+    status_command i3blocks
+    font pango:Monospace, FontAwesome 8
+    position top
+    strip_workspace_numbers yes
   }
 
 # Media Keys - Working on x220
@@ -151,9 +155,15 @@
 
 # Exec Files; Startup and _Always
   exec_always --no-startup-id "i3-msg \"9: &#xf001; Music; append_layout /home/user/julian/.config/i3/workspace-1.json\""
-  exec_always spotify
-  exec_always $ter -name cava -e ./cava
+  exec spotify
+  exec $ter -name cava -e ./cava
   exec protonmail-bridge
-  exec_always feh --bg-scale /home/julian/Pictures/Wallpapers/mountain.jpg
+  exec_always feh --recursive --randomize --bg-fill ~/Pictures/Wallpapers/* 
+ #exec_always compton
+ #exec_always feh --bg-scale /home/julian/Pictures/Wallpapers/mountain.jpg
+  exec --no-startup-id wicd-gtk -t
 
-
+# Gaps
+  for_window [class="^.*"] border pixel 0
+  gaps inner 15
+  gaps outer 10
