@@ -1,0 +1,50 @@
+#!/bin/bash
+
+#   BJG ~ Bad Joke Generator
+
+
+jokelist=(
+  "Why do ghosts like to ride in elevators? Because it raises their spirits!"
+  "Why did the skeleton skip the Halloween party? He had nobody to go with"
+  "Why are graveyards noisy? Because of all the coffin!"
+  "Why did the ghost go into the bar? For the Boos."
+  "What is a vampires favourite type of ship? A blood vessel."
+  "Which ghost is the best dancer? The Boogie Man!"
+  "Why are vampires stupid? Because they are all suckers."
+  "What's a ghost's favorite desert? I-Scream!"
+  "Why didn't the vampire bite Taylor Swift? Because she had bad blood."
+  "He can't stop laughing"
+  "How many vampires are in this room? I dont know, I cant Count Draculas."
+  "What do you get when you cross a vampire and a snow man? Frostbite"
+  "What is a vampires least favorite food? Steak"
+  "Why are vampires like false teeth? They all come out at night."
+  "What is a vampire's favorite fruit? A necktarine"
+  "Where do vampires keep their money? The blood bank!!!"
+  "Where does a ghost go on Saturday night? Anywhere where he can boo-gie."
+  "Why was the mummy so tense? Because he was all wound up."
+  "Why didn't the skeleton go to see a scary movie? He didn't have the guts."
+  "What happened to the man who didn't pay his exorcist? The house was repossessed."
+  "Where do baby ghosts go during the day? The dayscare scentre."
+  "How do you make a skeleton laugh? Tickle his funny bone."
+  "What do baby ghosts wear on Halloween? Pillowcases."
+  "What do you call a fat pumpkin? A plumpkin."
+  "He doesn't look too impressed (Image: Getty Images)"
+  "What kind of key does a ghost use to unlock their room? A spoo-key."
+  "What do ghosts eat? Spooketi."
+  "How do monsters tell the future? Read their horrorscope."
+  "Why are ghosts terrible liars? You can see right through them!"
+  "Why don't mummies take holidays? They're scared they'll unwind."
+  "What do ghosts use on their hair? Shamboo!"
+  "Why don't angry witches ride their brooms? They're scared of flying off the handle."
+  "What's wrong with twin witches? You never know which witch is which."
+  "What do you get if you drop a pumpkin? Squash."
+  "What do you call a ghost with a broken leg? Hoblin Goblin."
+  "What do you call a haunted chicken? A poultry-geist."
+  "What is a ghost's favourite game? Hide and shriek!"
+)
+
+echo ""
+selectedexpression=${jokelist[$RANDOM % ${#jokelist[@]} ]}
+echo $selectedexpression
+echo ""
+
