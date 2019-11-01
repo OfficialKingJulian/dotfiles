@@ -1,0 +1,26 @@
+#!/bin/bash
+
+#   BJG ~ Bad Joke Generator
+
+
+jokelist=(
+"Did you actually believe, or are you truly naive enough to think that children stood a chance against us? I&#x2019;ll make this simple for you, Potter. Give me the prophecy now, or watch your friends die."
+"And you must be Miss Granger. Yes, Draco&#x2019;s told me all about you. And your parents. Muggles, aren&#x2019;t they? Let me see. Red hair&#x2026; vacant expressions&#x2026; tatty second hand book&#x2026; you must be the Weasleys."
+"Haven&#x2019;t you always wondered what was the reason for the connection between you and the Dark Lord. Why he was unable to kill you when you were just an infant. Don&#x2019;t you want to know the secret, of your scar. All of the answers are there, Potter, in your hand. All you have to do is give it to me, I can show you everything."
+"If we are the ones to hand Potter to the Dark Lord, everything will be as it was, you understand?"
+"is my true mask."
+"Clearly. Associating with muggles. And I thought your family could sink no lower."
+"You must be very brave to mention his name. Or very foolish."
+"Let us hope that Mr. Potter will always be around to save the day."
+"put it this way. If it rains, you&#x2019;ll be the first to know."
+"time at the Ministry, Arthur, all those extra raids? I do hope they&#x2019;re paying you overtime. Though judging by the state of this, I&#x2019;d say not. What&#x2019;s the use in being a disgrace to the name of wizard if they don&#x2019;t even pay you well for it?"
+"assure you, my Lord, I have never renounced the old ways. The face I have been obliged to present since your&#x2026; absence&#x2026;"
+"My Lord, had I detected any sign&#x2026; a whisper of your whereabouts&#x2026;"
+"Mr. Potter!&#xA0;Lucius Malfoy. We meet at last. Forgive me, your scar is legend. As, of course, is the wizard who gave it to you."
+)
+
+echo ""
+selectedexpression=${jokelist[$RANDOM % ${#jokelist[@]} ]}
+echo $selectedexpression
+echo ""
+
