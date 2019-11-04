@@ -6,10 +6,6 @@
  
 setlocal enabledelayedexpansion
 
-  :: VIM
-        mkdir ..\.vim
-        xcopy vim\* ..\.vim\
-
   :: BASH
           xcopy env\bashrc* ..\bashrc*
           ren ..\bashrc .bashrc
