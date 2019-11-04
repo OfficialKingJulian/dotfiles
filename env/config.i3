@@ -5,7 +5,7 @@
 # Basic Config
   set $mod Mod1
   set $sup Mod4
-  set $ter i3-sensible-terminal
+  set $ter terminator
   font pango:monospace 9
 # bindsym $mod+x exec i3lock
   bindsym $mod+x exec ~/.config/i3/i3locker 
@@ -13,7 +13,8 @@
   bindsym $mod+Return exec $ter
   bindsym $mod+q kill
 # bindsym $mod+d exec dmenu_run
-  bindsym $mod+d exec --no-startup-id i3-dmenu-desktop   
+# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop   
+  bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -width 100 -padding 300 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "System San Francisco Display 14"
   
 # Restart i3 (e.g. apply changes!)
   bindsym $mod+Shift+r restart
@@ -117,6 +118,8 @@
   bindsym $sup+f exec firefox
   bindsym $sup+r exec $ter -name ranger -e ranger
   bindsym $sup+m exec $ter -name neomutt -e neomutt
+  bindsym $sup+i exec qutebrowser
+  bindsym $sup+s exec $ter -name gnome-control-center -e env XDG_CURRENT_DESKTOP=GNOME gnome-control-center
 
 
 # Workspace Specific Applications
@@ -139,14 +142,15 @@
     strip_workspace_numbers yes
   }
 
+
 # Media Keys - Working on x220
 # Pulse Audio 
   bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% # increase 
   bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% # decrease
   bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle       # mute 
 # Sreen Brightness
-  bindsym XF86MonBrightnessUp exec xbacklight -inc 20      # increase brightness
-  bindsym XF86MonBrightnessDown exec xbacklight -dec 20    # decrease brightness
+  bindsym XF86MonBrightnessUp exec xbacklight -inc 5      # increase brightness
+  bindsym XF86MonBrightnessDown exec xbacklight -dec 5    # decrease brightness
 # Media Player
   bindsym XF86AudioPlay exec playerctl play     # play (broken)
   bindsym XF86AudioPause exec playerctl pause   # paus (broken)
@@ -154,12 +158,12 @@
   bindsym XF86AudioPrev exec playerctl previous # prev
 
 # Exec Files; Startup and _Always
-  exec_always --no-startup-id "i3-msg \"9: &#xf001; Music; append_layout /home/user/julian/.config/i3/workspace-1.json\""
+  exec --no-startup-id "i3-msg \"9: &#xf001; Music; append_layout /home/user/julian/.config/i3/workspace-1.json\""
   exec spotify
   exec $ter -name cava -e ./cava
   exec protonmail-bridge
   exec_always feh --recursive --randomize --bg-fill ~/Pictures/Wallpapers/* 
- #exec_always compton
+  exec compton
  #exec_always feh --bg-scale /home/julian/Pictures/Wallpapers/mountain.jpg
   exec --no-startup-id wicd-gtk -t
 
