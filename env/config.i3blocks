@@ -1,0 +1,32 @@
+# i3blocks config file
+
+command=~/.config/i3blocks/i3blocks-contrib/$BLOCK_NAME
+separator_block_width=15
+markup=none
+
+# Generic media player support
+[mediaplayer]
+command=/home/julian/.config/i3blocks/i3blocks-contrib/mediaplayer/mediaplayer
+instance=spotify
+interval=5
+signal=10
+
+# Volume indicator
+[volume]
+command=/home/julian/.config/i3blocks/i3blocks-contrib/volume/volume
+label=♪
+interval=once
+signal=10
+#STEP=5%
+
+# Battery indicator
+[battery]
+command=/home/julian/.config/i3blocks/i3blocks-contrib/battery/battery
+label=   
+interval=30
+
+# Date Time
+[time]
+command=date '+%H:%M:%S %d-%m-%Y'
+interval=1
+
