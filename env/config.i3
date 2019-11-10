@@ -6,15 +6,17 @@
   set $mod Mod1
   set $sup Mod4
   set $ter terminator
-  font pango:monospace 9
+  font pango:Annonymous 10
 # bindsym $mod+x exec i3lock
-  bindsym $mod+x exec ~/.config/i3/i3locker 
+  bindsym $sup+l exec /home/julian/.config/i3/i3locker 
   floating_modifier $mod
   bindsym $mod+Return exec $ter
   bindsym $mod+q kill
-# bindsym $mod+d exec dmenu_run
+# Application Launcher
+  bindsym $mod+d      exec rofi -show run -lines 6 
+  bindsym $sup+d      exec rofi -show run -lines 6
+  bindsym $sup+Return exec rofi -show run -lines 6
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop   
-  bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -width 100 -padding 300 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "System San Francisco Display 14"
   
 # Restart i3 (e.g. apply changes!)
   bindsym $mod+Shift+r restart
@@ -137,7 +139,7 @@
 # finds out, if available)
   bar {
     status_command i3blocks
-    font pango:Monospace, FontAwesome 8
+    font pango:Anonymous Pro, FontAwesome 10
     position top
     strip_workspace_numbers yes
   }
@@ -158,16 +160,52 @@
   bindsym XF86AudioPrev exec playerctl previous # prev
 
 # Exec Files; Startup and _Always
-  exec --no-startup-id "i3-msg \"9: &#xf001; Music; append_layout /home/user/julian/.config/i3/workspace-1.json\""
-  exec spotify
-  exec $ter -name cava -e ./cava
+  exec_always pkill bg-script
   exec protonmail-bridge
-  exec_always feh --recursive --randomize --bg-fill ~/Pictures/Wallpapers/* 
+# exec_always feh --recursive --randomize --bg-fill ~/Pictures/Wallpapers/* 
+  exec_always /home/julian/.config/i3/bg-script
   exec compton
- #exec_always feh --bg-scale /home/julian/Pictures/Wallpapers/mountain.jpg
-  exec --no-startup-id wicd-gtk -t
+# exec_always --no-startup-id wicd-gtk -t
+  exec_always /home/julian/.config/i3/wifi
+# Restore GNOME's settings
+  exec --no-startup-id /usr/libexec/gnome-settings-daemon-localeexec
+# Fix a bug in gnome-settings-daemon: http://feeding.cloud.geek.nz/posts/creating-a-modern-tiling-desktop-environment-using-i3/
+  exec --no-startup-id dconf write /org/gnome/settings-daemon/plugins/cursor/active false
+  exec_always xsettingsd
 
 # Gaps
+# This might be overkill; probably won't use 
+# the resize much but cool it's there. 
   for_window [class="^.*"] border pixel 0
+  set $mode_gaps Gaps: (o) outer, (i) inner
+  set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+  set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+  bindsym $mod+Shift+g mode "$mode_gaps"
   gaps inner 15
   gaps outer 10
+  mode "$mode_gaps" {
+    bindsym o      mode "$mode_gaps_outer"
+    bindsym i      mode "$mode_gaps_inner"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+  }
+  mode "$mode_gaps_inner" {
+    bindsym plus  gaps inner current plus 5
+    bindsym minus gaps inner current minus 5
+    bindsym 0     gaps inner current set 0
+    bindsym Shift+plus  gaps inner all plus 5
+    bindsym Shift+minus gaps inner all minus 5
+    bindsym Shift+0     gaps inner all set 0
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+  }
+  mode "$mode_gaps_outer" {
+    bindsym plus  gaps outer current plus 5
+    bindsym minus gaps outer current minus 5
+    bindsym 0     gaps outer current set 0
+    bindsym Shift+plus  gaps outer all plus 5
+    bindsym Shift+minus gaps outer all minus 5
+    bindsym Shift+0     gaps outer all set 0
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+  }
