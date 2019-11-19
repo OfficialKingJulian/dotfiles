@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Start Wifi
+
+sudo service dbus reload
+sudo service wicd start
