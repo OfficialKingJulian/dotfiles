@@ -80,16 +80,16 @@
  #bindsym $mod+d focus child
 
 # Workstation Vars
-  set $ws1  "1: &#xf120; Terminal"
-  set $ws2  "2: &#xf269; Browser"
-  set $ws3  "3: &#xf07b; Files"
+  set $ws1  "1: &#xf120;"
+  set $ws2  "2: &#xf269;"
+  set $ws3  "3: &#xf07b;"
   set $ws4  "4: "
-  set $ws5  "5: &#xf233; Local"
-  set $ws6  "6: &#xf09b; Git"
+  set $ws5  "5: &#xf233;"
+  set $ws6  "6: &#xf09b;"
   set $ws7  "7: "
   set $ws8  "8: "
-  set $ws9  "9: &#xf001; Music"
-  set $ws0 "10: &#xf01c; Bridge"
+  set $ws9  "9: &#xf001;"
+  set $ws0 "10: &#xf01c;"
 
 # Workspace Bindings
   bindsym $mod+1 workspace $ws1
@@ -133,15 +133,23 @@
  #bindsym $mod+Shift+c reload
 
 # i3 Logout 
-  bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+  bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Brooo, you just posted cringe.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
   bar {
-    status_command i3blocks
+    i3bar_command i3bar -t
+    status_command i3blocks -c ~/.config/i3blocks/config
     font pango:Anonymous Pro, FontAwesome 10
     position top
     strip_workspace_numbers yes
+    height 25
+    tray_output none
+    separator_symbol " "
+    colors {
+        background #00000099
+        statusline #FFFFFF
+    }
   }
 
 
@@ -166,7 +174,8 @@
   exec_always /home/julian/.config/i3/bg-script
   exec compton
 # exec_always --no-startup-id wicd-gtk -t
-  exec_always /home/julian/.config/i3/wifi
+# exec_always /home/julian/.config/i3/wifi
+  exec nm-applet
 # Restore GNOME's settings
   exec --no-startup-id /usr/libexec/gnome-settings-daemon-localeexec
 # Fix a bug in gnome-settings-daemon: http://feeding.cloud.geek.nz/posts/creating-a-modern-tiling-desktop-environment-using-i3/
