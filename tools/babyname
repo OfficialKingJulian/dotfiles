@@ -1,0 +1,4 @@
+#!/bin/bash
+
+namelist="./namelist.txt"
+shuf -n 1 $namelist
