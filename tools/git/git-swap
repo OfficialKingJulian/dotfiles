@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# A small but useful script
+# to swap current git account
+
+# Just ported from github.com
+# /OfficialKingJulian/dotbatch 
+# in reality
+
+function useage {
+  echo Accepts arguments of \'personal\' or \'pro\'
+}
+
+if [[ ${1} == "personal" ]] ; then 
+  git config --global user.name  "OfficialKingJulian"
+  git config --global user.email official@kingjulian.xyz 
+  echo You are now using account OfficialKingJulian
+elif [[ ${1} == "pro" ]] ; then 
+  git config --global user.name  "JulianOrchard"
+  git config --global user.email contact@julians.email
+  echo You are now using account JulianOrchard
+else 
+  useage
+fi
