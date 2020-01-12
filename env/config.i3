@@ -80,16 +80,16 @@
  #bindsym $mod+d focus child
 
 # Workstation Vars
-  set $ws1  "1: &#xf120;"
-  set $ws2  "2: &#xf269;"
-  set $ws3  "3: &#xf07b;"
-  set $ws4  "4: "
-  set $ws5  "5: &#xf233;"
-  set $ws6  "6: &#xf09b;"
-  set $ws7  "7: "
-  set $ws8  "8: "
-  set $ws9  "9: &#xf001;"
-  set $ws0 "10: &#xf01c;"
+  set $ws1  "1:   &#xf120;  "
+  set $ws2  "2:   &#xf269;  "
+  set $ws3  "3:   &#xf07b;  "
+  set $ws4  "4:   &#xf233;  "
+  set $ws5  "5:   &#xf09b;  "
+  set $ws6  "6:   &#xf001;  "
+  set $ws7  "7:   &#xf01c;  "
+  set $ws8  "8: One"
+  set $ws9  "9: Two"
+  set $ws0 "10: Three"
 
 # Workspace Bindings
   bindsym $mod+1 workspace $ws1
@@ -125,15 +125,17 @@
 
 
 # Workspace Specific Applications
-  assign [class="ProtonMail Bridge"] $ws0
+  assign [class="ProtonMail Bridge"] $ws7
   assign [class="Nautilus" ] $ws3
+  assign [class="Firefox" ] $ws2
+  assign [class="Terminator" ] $ws1
 # for_window [class="Spotify"] move to workspace $ws9
 
 # Reload Config File
  #bindsym $mod+Shift+c reload
 
 # i3 Logout 
-  bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Brooo, you just posted cringe.' -b 'Yes, exit i3' 'i3-msg exit'"
+  bindsym $mod+Shift+e exec "i3-nagbar -t warning -m '' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -144,7 +146,7 @@
     position top
     strip_workspace_numbers yes
     height 25
-    tray_output none
+#    tray_output none
     separator_symbol " "
     colors {
         background #00000099
@@ -175,7 +177,9 @@
   exec compton
 # exec_always --no-startup-id wicd-gtk -t
 # exec_always /home/julian/.config/i3/wifi
+# Bluetooth and WiFi 
   exec nm-applet
+  exec bluetoothctl
 # Restore GNOME's settings
   exec --no-startup-id /usr/libexec/gnome-settings-daemon-localeexec
 # Fix a bug in gnome-settings-daemon: http://feeding.cloud.geek.nz/posts/creating-a-modern-tiling-desktop-environment-using-i3/
