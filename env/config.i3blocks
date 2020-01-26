@@ -13,18 +13,18 @@ signal=10
 # Volume indicator
 [volume]
 command=~/.config/i3blocks/inc/volume/volume
-label=♪  
+#label=Music
 interval=1
 signal=10
 
 # Battery indicator
 [battery]
 command=~/.config/i3blocks/inc/battery/battery
-label=  
+label=Battery  
 interval=30
 
 # Date Time
 [time]
-command=date '+%H:%M:%S %d-%m-%Y'
+command=date '+%H:%M:%S    %d / %m   '
 interval=1
 
