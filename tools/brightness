@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Higher or Lower Brightness...
+# because I just can't get xbacklight working
+# and I REALLY needed a solution even temp
+
+file=/sys/class/backlight/intel_backlight/brightness
+curr=$(cat ${file})
+
+if [[ ${1} == "h" ]] ; then
+  curr=$((curr+150))
+  sudo echo ${curr} > ${file}
+elif [[ ${1} == "l" ]] ; then
+  curr=$((curr-150))
+  sudo echo ${curr} > ${file}
+else 
+  echo "This requires arguments; either h or l."
+fi
+

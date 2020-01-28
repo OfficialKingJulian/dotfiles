@@ -1,0 +1,13 @@
+#!/bin/bash 
+
+# More comprehensive 'add to path'
+
+  shelltype=$(ps -p $$ -oargs= | head -n1 | cut -d " " -f1)
+  if [[ ${shelltype} == /bin/bash ]] ; then
+  # Simple bash version
+    echo "export PATH=\"\$PATH:$PWD\"" >> /home/julian/.bashrc
+    source /home/julian/.bashrc
+  else
+  # Do fish path
+    /home/julian/dotfiles/tools/path/add-to-path
+  fi
