@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Title:	wdiff
+# By: 		OfficialKingJulian
+# Tag Added:	02-02-2020
+# Description:  Diff files from the web
+
+diff <(curl -s ${1}) <(curl -s ${2})

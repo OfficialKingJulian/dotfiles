@@ -1,0 +1,39 @@
+#!/bin/bash
+
+# Title: 	desc 
+# By: 		OfficialKingJulian
+# Tag Added: 	02/02/2020
+# Description: 	Adds file descriptions to scripts I write.
+
+# File Exists
+filename=${1}
+if [[ -f ${filename} ]] ; then
+
+# Make a new file and add filename, etc
+  filenamecp="${filename}-temp"
+  date=`date +%d-%m-%Y`
+  echo "#!/bin/bash" > ${filenamecp}
+  echo "" >> ${filenamecp}
+  echo "# Title:	${filename}" >> ${filenamecp}
+  echo "# By: 		OfficialKingJulian" >> ${filenamecp}
+  echo "# Tag Added:	${date}" >> ${filenamecp}
+
+# Get file description
+  printf "Please create a short description for the file: "
+  read desc
+
+# Add title and description
+  echo "# Description:  ${desc}" >> ${filenamecp}
+
+# Copy the rest of the file 
+  sed -n '2,$ p' ${filename} >> ${filenamecp}
+
+# Replace file
+  mv ${filenamecp} ${filename}
+  chmod +x ${filename}
+
+else
+
+# Error
+  echo "Error: This file doesn't seem to exist!"
+fi
