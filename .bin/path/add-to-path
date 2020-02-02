@@ -1,8 +1,12 @@
-#!/usr/bin/env fish
+#!/bin/bash
+
+# Title:	add-to-path
+# By: 		OfficialKingJulian
+# Tag Added:	02-02-2020
+# Description:  FISH; adds current dir to path
 
 echo ""
 read testing -P "Would you like to add the current location as a Path?  "
- 
 
 switch $testing 
   case y yes

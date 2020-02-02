@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Title:	how-many-lines-of-code
+# By: 		OfficialKingJulian
+# Tag Added:	02-02-2020
+# Description:  Return the number of lines of code in a repo
+
 # https://stackoverflow.com/questions/26881441/can-you-get-the-number-of-lines-of-code-from-a-github-repository
 # Requires Cloc to be installed
 

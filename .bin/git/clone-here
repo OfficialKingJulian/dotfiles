@@ -1,6 +1,9 @@
 #!/bin/bash
 
-# Clones Git Repo To Current Dir
+# Title:	clone-here
+# By: 		OfficialKingJulian
+# Tag Added:	02-02-2020
+# Description:  Clone repo to the current dir
 
 # clone
   git clone "$1"

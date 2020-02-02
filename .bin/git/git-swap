@@ -1,7 +1,9 @@
 #!/bin/bash
 
-# A small but useful script
-# to swap current git account
+# Title:	git-swap
+# By: 		OfficialKingJulian
+# Tag Added:	02-02-2020
+# Description:  Used to swap between my two GitHub acounts
 
 # Just ported from github.com
 # /OfficialKingJulian/dotbatch 

@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Title:	fish-remove-path
+# By: 		OfficialKingJulian
+# Tag Added:	02-02-2020
+# Description:  FISH; used with remove-path to remove the fish path
+
+set --erase --universal fish_user_paths[$argv]

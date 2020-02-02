@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Title:	publishtweet
+# By: 		OfficialKingJulian
+# Tag Added:	02-02-2020
+# Description:  Called by cron to publish scheduled tweets
+
 # Publishes Scheduled Tweet 
   thedate=$(date +'%Y-%m-%d')
   cd ${HOME}/twitter/scheduled 

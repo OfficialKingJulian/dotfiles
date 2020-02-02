@@ -1,7 +1,9 @@
 #!/bin/bash
 
-# Removes the history
-# of a specified file
+# Title:	remove-file-history
+# By: 		OfficialKingJulian
+# Tag Added:	02-02-2020
+# Description:  Removes a file and history from the current git repo
 
 #       To Improve; needs to be able to deal
 #                   with more than one file 

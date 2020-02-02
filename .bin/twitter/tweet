@@ -1,6 +1,9 @@
 #!/bin/bash
 
-# Better CLI Tweeting and Random Scheduling
+# Title:	tweet
+# By: 		OfficialKingJulian
+# Tag Added:	02-02-2020
+# Description:  CLI tweeting and tweet scheduling
 
   function usage {
     echo ""

@@ -1,6 +1,9 @@
-#!/bin/bash 
+#!/bin/bash
 
-# More comprehensive 'add to path'
+# Title:	add-path
+# By: 		OfficialKingJulian
+# Tag Added:	02-02-2020
+# Description:  A more comprehensive solution to add current dir to path
 
   shelltype=$(ps -p $$ -oargs= | head -n1 | cut -d " " -f1)
   if [[ ${shelltype} == /bin/bash ]] ; then

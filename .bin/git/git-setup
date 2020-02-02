@@ -1,4 +1,10 @@
-#!/bin/bash 
+#!/bin/bash
+
+# Title:	git-setup
+# By: 		OfficialKingJulian
+# Tag Added:	02-02-2020
+# Description:  Change local git username and email
+
 echo "Please enter your git username:" 
 read usrnm
 echo "Please enter your email associated with this account:" 

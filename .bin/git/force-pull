@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Title:	force-pull
+# By: 		OfficialKingJulian
+# Tag Added:	02-02-2020
+# Description:  Forces the pull command
+
 git fetch --all
 if [[ ! -z ${1} ]] ; then
   git reset --hard origin/master
