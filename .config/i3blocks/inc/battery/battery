@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Title:	battery
+# By: 		OfficialKingJulian
+# Tag Added:	03-02-2020
+# Description:  Displays battery percentage for i3blocks
+
+battery=$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -E "state|to\ full|percentage" | tr -d -c 0-9)%
+bstatus=$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -E "state:" | sed -e 's/state://g' | tr -d " \t\n\r" )
+if [[ ${bstatus} == "charging" ]] ; then
+# Currently Charging
+  echo ⚡ ${battery:3:4}
+else
+# Regular (not charging)
+  echo ${battery}
+fi
+

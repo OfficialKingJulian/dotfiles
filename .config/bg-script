@@ -1,6 +1,0 @@
-#!/bin/bash
-
-while true ; do
-  feh --recursive --randomize --bg-fill ${HOME}/Pictures/Wallpapers/* 
-  sleep 120
-done

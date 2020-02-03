@@ -6,6 +6,7 @@ Some of the programs in use include...
 - rofi (dmenu alternative)
 - feh (image viewer)
 - scrot (screenshot)
+- light (backlight controller)
 
 Programs I want to have a look at...
 

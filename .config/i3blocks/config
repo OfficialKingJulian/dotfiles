@@ -13,7 +13,7 @@ signal=10
 # Volume indicator
 [volume]
 command=~/.config/i3blocks/inc/volume/volume
-#label=Music
+label=Music  
 interval=1
 signal=10
 
