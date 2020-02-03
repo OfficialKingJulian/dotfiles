@@ -1,0 +1,205 @@
+
+# vim:filetype=i3
+
+#  GENERAL  #
+
+  set $mod Mod1
+  set $sup Mod4
+  set $ter terminator
+  font pango:Annonymous 10
+# bindsym $mod+x exec i3lock
+  bindsym $sup+l exec /home/julian/.config/i3/i3locker 
+  floating_modifier $mod
+  bindsym $mod+Return exec $ter
+  bindsym $mod+q kill
+# Application Launcher
+  bindsym $sup+Return exec rofi -show run -lines 6
+# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop   
+# Restart i3 (e.g. apply changes!)
+  bindsym $mod+Shift+r restart
+# i3 Logout
+  bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Haha, really?' -b 'Yes, exit i3' 'i3-msg exit'"
+
+
+
+
+#  WINDOW MOVEMENT SETTINGS  #
+
+# Change Focus
+  bindsym $mod+h focus left
+  bindsym $mod+j focus down
+  bindsym $mod+k focus up
+  bindsym $mod+l focus right
+  bindsym $mod+Left focus left
+  bindsym $mod+Down focus down
+  bindsym $mod+Up focus up
+  bindsym $mod+Right focus right
+# Move
+  bindsym $mod+Shift+h move left
+  bindsym $mod+Shift+j move down
+  bindsym $mod+Shift+k move up
+  bindsym $mod+Shift+l move right
+  bindsym $mod+Shift+Left move left
+  bindsym $mod+Shift+Down move down
+  bindsym $mod+Shift+Up move up
+  bindsym $mod+Shift+Right move right
+# Resize
+  bindsym $mod+$sup+h resize shrink width 10 px or 10 ppt
+  bindsym $mod+$sup+j resize grow height 10 px or 10 ppt
+  bindsym $mod+$sup+k resize shrink height 10 px or 10 ppt
+  bindsym $mod+$sup+l resize grow width 10 px or 10 ppt
+  bindsym $mod+$sup+Left resize shrink width 10 px or 10 ppt
+  bindsym $mod+$sup+Down resize grow height 10 px or 10 ppt
+  bindsym $mod+$sup+Up resize shrink height 10 px or 10 ppt
+  bindsym $mod+$sup+Right resize grow width 10 px or 10 ppt
+
+# Spilt Horiz + Vert
+  bindsym $mod+g split h
+  bindsym $mod+v split v
+
+# Enter Fullscreen Mode
+  bindsym $mod+f fullscreen toggle
+
+# Change Container Layout
+# I simply don't use it
+  #bindsym $mod+s layout stacking
+  #bindsym $mod+w layout tabbed
+  #bindsym $mod+e layout toggle split
+
+# Toggle Tiling / Floating
+  bindsym $mod+Shift+space floating toggle
+
+# Change Focus Between Tiling / Floating Windows
+  bindsym $mod+space focus mode_toggle
+
+# Focus The Parent Container / (Child)
+  bindsym $mod+a focus parent
+ #bindsym $mod+d focus child
+
+
+
+#  WORKSTATION MOVEMENT SETTINGS  #
+
+# Workstation Vars
+# set $ws1  "1:   &#xf120;  "
+# set $ws2  "2:   &#xf269;  "
+# set $ws3  "3:   &#xf07b;  "
+# set $ws4  "4:   &#xf233;  "
+# set $ws5  "5:   &#xf09b;  "
+# set $ws6  "6:   &#xf001;  "
+# set $ws7  "7:   &#xf01c;  "
+# set $ws8  "8: One"
+# set $ws9  "9: Two"
+# set $ws0 "10: Three"
+  set $ws1  "1:   1  "
+  set $ws2  "2:   2  "
+  set $ws3  "3:   3  "
+  set $ws4  "4:   4  "
+  set $ws5  "5:   5  "
+  set $ws6  "6:   6  "
+  set $ws7  "7:   7  "
+  set $ws8  "8:   8  "
+  set $ws9  "9:   9  "
+  set $ws0 "10:   10 "
+# Workspace Bindings
+  bindsym $mod+1 workspace $ws1
+  bindsym $mod+2 workspace $ws2
+  bindsym $mod+3 workspace $ws3
+  bindsym $mod+4 workspace $ws4
+  bindsym $mod+5 workspace $ws5
+  bindsym $mod+6 workspace $ws6
+  bindsym $mod+7 workspace $ws7
+  bindsym $mod+8 workspace $ws8
+  bindsym $mod+9 workspace $ws9
+  bindsym $mod+0 workspace $ws0
+# Move Container To Workspace Bindings
+  bindsym $mod+Shift+1 move container to workspace $ws1
+  bindsym $mod+Shift+2 move container to workspace $ws2
+  bindsym $mod+Shift+3 move container to workspace $ws3
+  bindsym $mod+Shift+4 move container to workspace $ws4
+  bindsym $mod+Shift+5 move container to workspace $ws5
+  bindsym $mod+Shift+6 move container to workspace $ws6
+  bindsym $mod+Shift+7 move container to workspace $ws7
+  bindsym $mod+Shift+8 move container to workspace $ws8
+  bindsym $mod+Shift+9 move container to workspace $ws9
+  bindsym $mod+Shift+0 move container to workspace $ws0
+
+
+
+
+#  APPLICATION SPECIFIC BINDS/SETTINGS  #
+
+
+# Open Binds
+  bindsym $sup+f exec firefox
+  bindsym $sup+e exec $ter -name ranger -e ranger
+  bindsym $sup+m exec $ter -name neomutt -e neomutt
+# Bind Applications to Certain Workspaces
+  assign [class="ProtonMail Bridge"] $ws7
+  assign [class="Firefox" ] $ws2
+  assign [class="Terminator" ] $ws1
+
+
+
+
+#  STATUS BAR  #
+
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+  bar {
+    i3bar_command i3bar -t
+    status_command i3blocks -c /home/julian/.config/i3blocks/config
+    font pango:Anonymous Pro, FontAwesome 10
+    position top
+    strip_workspace_numbers yes
+    height 25
+    tray_output none
+    separator_symbol " "
+    colors {
+        background #00000099
+        statusline #FFFFFF
+    }
+  }
+
+
+
+
+#  MEDIA KEYS  #
+
+
+# Pulse Audio 
+  bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% # increase 
+  bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% # decrease
+  bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle       # mute 
+# Sreen Brightness - uses 'light'
+  bindsym XF86MonBrightnessUp exec "light -A 5"
+  bindsym XF86MonBrightnessDown exec "light -U 5"
+# Media Player
+  bindsym XF86AudioPlay exec playerctl play     # play (broken)
+  bindsym XF86AudioPause exec playerctl pause   # paus (broken)
+  bindsym XF86AudioNext exec playerctl next     # next
+  bindsym XF86AudioPrev exec playerctl previous # prev
+
+# Exec Files; Startup and _Always
+  exec_always pkill bg-script
+  exec_always pkill compton
+  exec protonmail-bridge
+# exec_always feh --recursive --randomize --bg-fill ~/Wallpapers/* 
+  exec_always ~/.config/i3/bg-script
+  exec_always compton
+# Bluetooth and WiFi 
+  exec bluetoothctl
+# Restore GNOME's settings
+# exec --no-startup-id /usr/libexec/gnome-settings-daemon-localeexec
+# Fix a bug in gnome-settings-daemon: http://feeding.cloud.geek.nz/posts/creating-a-modern-tiling-desktop-environment-using-i3/
+# exec --no-startup-id dconf write /org/gnome/settings-daemon/plugins/cursor/active false
+
+# Gaps
+  for_window [class="^.*"] border pixel 0
+  gaps inner 15
+  gaps outer 10
+  bindsym $mod+$sup+y gaps inner current plus 5
+  bindsym $mod+$sup+u gaps inner current minus 5
+  bindsym $mod+$sup+i gaps outer current plus 5
+  bindsym $mod+$sup+o gaps outer current minus 5
