@@ -1,4 +1,0 @@
-#!/bin/bash
-
-namelist="/home/julian/dotfiles/tools/namelist.txt"
-shuf -n 1 $namelist

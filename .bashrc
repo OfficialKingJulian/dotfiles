@@ -20,3 +20,4 @@
   export PATH="$PATH:/home/julian/dotfiles/.bin"
   export PATH="$PATH:/home/julian/dotfiles/.bin/git"
   export PATH="$PATH:/home/julian/dotfiles/.bin/mutt"
+  export PATH="$PATH:/home/julian/dotfiles"

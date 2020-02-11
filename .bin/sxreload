@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# temporary
+# https://github.com/baskerville/sxhkd/issues/94
+  pkill -USR1 -x sxhkd
