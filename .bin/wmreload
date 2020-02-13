@@ -1,5 +1,5 @@
 #!/bin/bash
 
-# temporary
+  /home/julian/.config/bspwm/bspwmrc
 # https://github.com/baskerville/sxhkd/issues/94
   pkill -USR1 -x sxhkd
