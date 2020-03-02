@@ -1,0 +1,54 @@
+#!/bin/bash
+
+function cleanend() {
+  rm ${temp} ${tem2}
+  exit 0 
+}
+
+# Define
+  temp="${HOME}/temp-imgur"
+  tem2="${HOME}/temp-imgu2"
+
+# Get Album URL
+  albumurl=${1}
+  if [[ ${albumurl} = "" ]] ; then 
+    printf "What is the URL of the album you want to get? "
+    read albumurl
+  fi
+
+# Download Name
+  nicename=${2}
+  if [[ ${nicename} = "" ]] ; then
+    printf "What would you like to name the album and images? (Enter to leave as default random imgur string) "
+    read nicename
+    if [[ ${nicename} = "" ]] ; then nicename=$(echo "${albumurl}" | sed -e 's/https:\/\/imgur.com\/gallery\///g') ; fi
+  fi
+  echo "nice name is ${nicename}"
+
+# Get URL and find images
+  wget ${albumurl} -O ${temp} -q
+  # this is where .jpg should be added... maybe review
+  echo "$(grep post-image-container ${temp} | sed -e 's/ //g;s/<divid=\"/https:\/\/i.imgur.com\//g' | sed -e 's/\".*//g')">> ${tem2}
+
+# Confirm if sure
+  shopt -s nocasematch
+  nuum=$(grep -o 'post-image-container' ${temp} | wc -l)
+  while true ; do
+    echo "Are you sure you want to download ${nuum} images? [y/n]"
+    read yn
+    if [[ ${yn} = "y" ]] || [[ ${yn} = "yes" ]] ; then break ; fi
+    if [[ ${yn} = "n" ]] || [[ ${yn} = "no" ]] ; then cleanend ; fi
+  done
+
+# Do the download
+  if [[ ! -d ${HOME}/Pictures/ ]] ; then mkdir ${HOME}/Pictures/ ; fi
+  if [[ ! -d ${HOME}/Pictures/imget/ ]] ; then mkdir ${HOME}/Pictures/imget/ ; fi
+  if [[ ! -d "${HOME}/Pictures/imget/${nicename}/" ]] ; then mkdir "${HOME}/Pictures/imget/${nicename}/" ; fi
+  imnum=0
+  while read image ; do
+    imnum=$((imnum+1))
+    wget "$image.jpg" -O "${HOME}/Pictures/imget/${nicename}/${nicename}-${imnum}.jpg" -nv
+  done <${tem2}
+
+# End it off
+  cleanend
