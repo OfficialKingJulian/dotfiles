@@ -31,10 +31,9 @@
   padding-right = 5
   module-margin-left = 1
   module-margin-right = 2
-  font-0 = fixed:pixelsize=10;1
+; font-0 = fixed:pixelsize=10;1
 ; font-0 = FontAwesome:pixelsize=12;0
-  font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-; font-2 = siji:pixelsize=10;1
+  font-1 = Roboto-Mono::size=8:antialias=false;0
   font-2 = FontAwesome:pixelsize=10;0
  
 ; Module and Tray Pos
@@ -53,7 +52,7 @@
 
 [module/xwindow]
   type = internal/xwindow
-  label = %title:0:50: ~ %
+  label = %title:0:90: ~ %
 
 [module/filesystem]
   type = internal/fs

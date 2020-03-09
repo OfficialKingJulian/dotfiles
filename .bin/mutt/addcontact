@@ -1,5 +1,0 @@
-#!/bin/bash
-
-# Works the same as 'spell'
-
-echo "    alias ${1} ${2}" >> "${HOME}/.config/mutt/contacts.mutt"

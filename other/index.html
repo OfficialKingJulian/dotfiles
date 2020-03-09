@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+     <title>
+        Julian's Start Page
+      </title>
+      <style>
+        body {
+          background-color: #000;
+        }
+      </style>
+  </head>
+
+  <!-- Bodus -->
+  <body>
+    <input type="text">
+
+
+  <!-- JS, for Keybinding! -->
+    <script type="text/javascript">
+      // Shift + Letter Shortcuts
+        document.addEventListener("keypress", function(event) {
+          if (event.key == 'f') {
+            if (event.key == 'g') { 
+              // search google
+              alert("test");
+            } else if (event.key == 'd' ) {
+              // search ddg
+            } else if (event.key == 'b') {
+              // search bing}
+            }
+          } else {
+            // Calendar
+            if (event.key == 'c') { window.open('https://calendar.google.com')}
+            // Twitter (t)
+            if (event.key == 't') { window.open('https://twitter.com')}
+            // Trello (T)
+            if (event.key == 'T') { window.open('https://trello.com')} 
+            // Outlook (o)
+            if (event.key == 'o') { window.open('https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=13&ct=1583536146&rver=7.0.6737.0&wp=MBI_SSL&wreply=https%3a%2f%2foutlook.live.com%2fowa%2f%3fnlp%3d1%26RpsCsrfState%3dc28d96aa-b446-fde2-435e-6865479b6287&id=292841&aadredir=1&CBCXT=out&lw=1&fl=dob%2cflname%2cwld&cobrandid=90015') }
+            // Misc. (G, p, u)
+            if (event.key == 'G') { window.open('https://boards.4channel.org/g') } // /g/
+            if (event.key == 'p') { window.open('https://boards.4channel.org/wg') } // /wg/ (p==papes)
+            if (event.key == 'u') { window.open('https://www.reddit.com/r/UnixPorn')} // /r/UnixPorn
+          }
+        });
+    </script>
+  </body>
+</html>
